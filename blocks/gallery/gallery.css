@@ -1,0 +1,21 @@
+.gallery {
+  display: grid;
+  width: 68.75%;
+
+  border-radius: 10px;
+  margin: 0 0 68px 0;
+  display: grid;
+  box-sizing: border-box;
+  border: dashed 1px red;
+
+  grid-template-columns: repeat(3, minmax(282px, 1fr));
+  grid-template-rows: auto;
+  column-gap: 17px;
+  row-gap: 20px;
+
+  /*
+  grid-auto-rows: 22.5625rem;
+  grid-template-columns: repeat(autofill, minmax(17.625rem, 1fr));
+  grid-row-gap: 1.25rem;
+  grid-column-gap: 1.0625rem;*/
+}

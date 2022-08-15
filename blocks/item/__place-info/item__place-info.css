@@ -1,0 +1,7 @@
+.item__place-info {
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 0 0 10px 10px;
+}

@@ -1,0 +1,9 @@
+.item__place-like-button {
+  background-image: url("../../../images/heart.svg");
+  background-color: red;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 21px;
+  height: 19px;
+  align-self: center;
+}

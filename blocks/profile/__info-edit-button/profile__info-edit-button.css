@@ -1,0 +1,14 @@
+.profile__info-edit-button {
+  background-image: url(../../../images/EditButton.svg);
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-self: flex-end;
+  /*width: 5.7831%;
+  height: 61.5384%;*/
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  background-color: red;
+}

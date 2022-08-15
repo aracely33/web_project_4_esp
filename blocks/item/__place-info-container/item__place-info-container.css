@@ -1,0 +1,6 @@
+.item__place-info-container {
+  width: 87.234%;
+  display: inline-block;
+  border: solid 1px red;
+  display: flex;
+}

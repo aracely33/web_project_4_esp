@@ -1,0 +1,14 @@
+.profile__info-name {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
+
+  color: #ffffff;
+  margin: 0 4.3373% 0 0;
+  padding: 0;
+  max-width: 89.87%;
+
+  background-color: aqua;
+}
