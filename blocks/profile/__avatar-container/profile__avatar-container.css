@@ -1,6 +1,9 @@
 .profile__avatar-container {
-  border: dashed 1px brown;
-  width: 13.63%;
-  margin: 0;
+  width: 120px;
+  height: 120px;
+  margin: 0 3.4% 0 0;
   padding: 0;
+  display: flex;
+  align-items: center;
+  border: solid 1px red;
 }

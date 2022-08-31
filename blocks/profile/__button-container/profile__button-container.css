@@ -1,8 +1,6 @@
 .profile__button-container {
-  border: dashed 1px #008000;
   display: flex;
-
-  width: 17.04%;
+  max-width: 17.04%;
   margin: 0;
   padding: 0;
 }
