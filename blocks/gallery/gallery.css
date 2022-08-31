@@ -1,15 +1,16 @@
 .gallery {
-  display: inline-grid;
+  display: flex;
+  flex-wrap: wrap;
   width: 68.75%;
-
+  justify-content: center;
+  gap: 20px 17px;
   border-radius: 10px;
   margin: 0 0 68px 0;
-  display: grid;
-  box-sizing: border-box;
   border: dashed 1px blue;
+}
 
-  grid-template-columns: repeat(auto-fill, 280px);
-
-  column-gap: 17px;
-  row-gap: 20px;
+@media screen and (max-width: 321px) {
+  .gallery {
+    width: 88.125%;
+  }
 }
