@@ -5,3 +5,10 @@
   margin: 0 auto 36.25px auto;
   min-height: 74px;
 }
+
+@media screen and (max-width: 321px) {
+  .header {
+    width: 100%;
+    margin: 0 0 38.25px 0;
+  }
+}
