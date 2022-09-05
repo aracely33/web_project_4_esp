@@ -6,7 +6,6 @@
   gap: 20px 17px;
   border-radius: 10px;
   margin: 0 0 68px 0;
-  border: dashed 1px blue;
 }
 
 @media screen and (max-width: 321px) {
