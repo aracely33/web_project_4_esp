@@ -4,3 +4,10 @@
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width: 321px) {
+  .profile__button-container {
+    width: 100%;
+    height: 50px;
+  }
+}

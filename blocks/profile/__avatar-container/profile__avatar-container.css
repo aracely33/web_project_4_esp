@@ -6,3 +6,10 @@
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 321px) {
+  .profile__avatar-container {
+    width: 42.5531%;
+    margin: 0 0 30px 0;
+  }
+}

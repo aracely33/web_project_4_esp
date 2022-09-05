@@ -1,6 +1,12 @@
 .profile__info-edit {
   width: 100%;
-  border: solid 1px red;
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 321px) {
+  .profile__info-edit {
+    width: 79.4326%;
+    margin: 0 0 14px 0;
+  }
 }

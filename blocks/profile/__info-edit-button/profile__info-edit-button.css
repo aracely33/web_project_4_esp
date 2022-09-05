@@ -9,3 +9,10 @@
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width: 321px) {
+  .profile__info-edit-button {
+    min-width: 18px;
+    min-height: 18px;
+  }
+}
