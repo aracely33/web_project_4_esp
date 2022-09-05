@@ -6,6 +6,7 @@
   align-self: flex-end;
   min-width: 24px;
   min-height: 24px;
+  border: none;
   margin: 0;
   padding: 0;
 }
