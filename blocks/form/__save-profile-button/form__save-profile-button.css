@@ -1,0 +1,28 @@
+.form__save-profile-button {
+  width: 83.25%;
+  background: #000000;
+  border-radius: 2px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2;
+  box-sizing: inherit;
+  padding: 13.66px 28.83% 18.49px 29.06%;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__save-profile-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 321px) {
+  .form__save-profile-button {
+    width: 84.39%;
+    font-size: 17px;
+    padding: 14px 31.56% 14px 31.91%;
+  }
+}

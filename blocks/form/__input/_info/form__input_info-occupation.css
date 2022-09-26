@@ -1,0 +1,9 @@
+.form__input_info-occupation {
+  margin: 0 0 48px 0;
+}
+
+@media screen and (max-width: 321px) {
+  .form__input_info-occupation {
+    margin: 0 0 46px 0;
+  }
+}

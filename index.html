@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, height=device-height, initial-scale=1"
     />
+    <link rel="stylesheet" href="./vendor/normalize2.css" />
     <link rel="stylesheet" href="./pages/index.css" />
     <title>Around the U.S.</title>
   </head>
@@ -31,13 +32,16 @@
         <div class="profile__info">
           <div class="profile__info-edit">
             <p class="profile__info-name">Jacques Cousteau</p>
-            <button type="button" class="profile__info-edit-button"></button>
+            <button
+              type="button"
+              class="profile__info-edit-button pointer"
+            ></button>
           </div>
           <p class="profile__info-occupation">Explorador</p>
         </div>
 
         <div class="profile__button-container">
-          <button type="button" class="profile__add-button"></button>
+          <button type="button" class="profile__add-button pointer"></button>
         </div>
       </div>
 
@@ -51,7 +55,10 @@
           <div class="item__place-info">
             <div class="item__place-info-container">
               <p class="item__place-info-name">Valle de Yosemite</p>
-              <button type="button" class="item__place-like-button"></button>
+              <button
+                type="button"
+                class="item__place-like-button pointer"
+              ></button>
             </div>
           </div>
         </div>
@@ -65,7 +72,10 @@
           <div class="item__place-info">
             <div class="item__place-info-container">
               <p class="item__place-info-name">Lago Louise</p>
-              <button type="button" class="item__place-like-button"></button>
+              <button
+                type="button"
+                class="item__place-like-button pointer"
+              ></button>
             </div>
           </div>
         </div>
@@ -79,7 +89,10 @@
           <div class="item__place-info">
             <div class="item__place-info-container">
               <p class="item__place-info-name">Montañas Calvas</p>
-              <button type="button" class="item__place-like-button"></button>
+              <button
+                type="button"
+                class="item__place-like-button pointer"
+              ></button>
             </div>
           </div>
         </div>
@@ -93,7 +106,10 @@
           <div class="item__place-info">
             <div class="item__place-info-container">
               <p class="item__place-info-name">Latemar</p>
-              <button type="button" class="item__place-like-button"></button>
+              <button
+                type="button"
+                class="item__place-like-button pointer"
+              ></button>
             </div>
           </div>
         </div>
@@ -107,7 +123,10 @@
           <div class="item__place-info">
             <div class="item__place-info-container">
               <p class="item__place-info-name">Vanoise National</p>
-              <button type="button" class="item__place-like-button"></button>
+              <button
+                type="button"
+                class="item__place-like-button pointer"
+              ></button>
             </div>
           </div>
         </div>
@@ -121,34 +140,45 @@
           <div class="item__place-info">
             <div class="item__place-info-container">
               <p class="item__place-info-name">Lago di Braies</p>
-              <button type="button" class="item__place-like-button"></button>
+              <button
+                type="button"
+                class="item__place-like-button pointer"
+              ></button>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="popup">
-        <div class="popup__container">
-          <form class="form">
-            <h2 class="form__heading">Editar perfil</h2>
-            <label for="nombre"> Nombre</label>
-            <input
-              type="text"
-              id="nombre"
-              placeholder="Jaques Cousteau"
-              name="nombre"
-            />
-            <label for="ocupación">Ocupación</label>
-            <input type="text" id="ocupación" name="ocupación" />
-            <button type="submit"></button>
-          </form>
-          <div class="close-button"></div>
         </div>
       </div>
 
       <footer class="footer">
         <p class="footer">© 2021 Alrededor de los EEUU</p>
       </footer>
+
+      <div class="popup">
+        <div class="popup__container">
+          <form class="form">
+            <h2 class="form__heading">Editar perfil</h2>
+            <input
+              type="text"
+              id="nombre"
+              class="form__input form__input_info-name"
+              placeholder="Jaques Cousteau"
+              name="nombre"
+            />
+            <input
+              type="text"
+              id="ocupación"
+              class="form__input form__input_info-occupation"
+              placeholder="ocupación"
+              name="ocupación"
+            />
+            <button class="form__save-profile-button pointer" type="submit">
+              Guardar
+            </button>
+          </form>
+          <div class="close-button pointer"></div>
+        </div>
+      </div>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
