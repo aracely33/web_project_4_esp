@@ -27,6 +27,7 @@
 @import url(../blocks/item/__place-info-container/item__place-info-container.css);
 @import url(../blocks/item/__place-info-name/item__place-info-name.css);
 @import url(../blocks/item/__place-like-button/item__place-like-button.css);
+@import url(../blocks/item/__place-like-button/_active/item__place-like-button_active.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
