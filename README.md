@@ -1,15 +1,15 @@
 # Proyecto 4: Alrededor de los Estados Unidos
 
-##
-
-Las imágenes se obtuvieron directamente del archivo en Figma, pero sería agradable variar el contenido utilizando * [Enlace a una variedad de imágenes interesantes](https://unsplash.com).
-Actualmente el programa solo es capaz de modificar los datos de perfil del usuario mediante un formulario, los cuales, una vez refrescada la página, no son guardados.Para completar esta parte se pretende agregar más tarde la parte de la conexión con el servidor.
-Agregar funcionalidad al botón de like *item**place-like-button* en el bloque *item* y más lugares mediante el botón *profile**add-button* en el bloque *profile\*
-
 ### Descripción general
 
 **Alrededor del mundo** es un proyecto donde se despliegan una serie de tarjetas de diferentes partes del mundo, contiene la información de perfil que puede ser editada. Para ello se utilizó el método _query.Selector_ y _textContent_ para poder manipular el contenido en las clases: _profile\_\_info-name_ y _profile\_\_info-occupation_ mediante el uso de una función que se utilizaría como handler en la propiedad .addEventListener, y de esta forma poder asociarlo al botón contenido en la clase _form\_\_save-profile-button_. Se utilizó un proceso similar para abrir la ventana _popup_ con el botón contenido en la clase _profile\_\_info-edit-button_
 Se utilizó el diseño responsivo en esta página para dispositivos de resoluciones de 1280px y 320px.
+Las imágenes se obtuvieron directamente del archivo en Figma, pero se podría variar el contenido utilizando \_ [Enlace a una variedad de imágenes interesantes](https://unsplash.com).
+
+Actualmente el programa solo es capaz de modificar los datos de perfil del usuario mediante un formulario, los cuales, una vez refrescada la página, no son guardados.Para completar esta parte se pretende agregar más tarde la parte de la conexión con el servidor.
+Agregar funcionalidad al botón de like en forma de corazón y al botón con el símbolo "+" para añadir los lugares que se deseen.
+
+### Tecnologías y técnicas
 
 - Figma
 - Imágenes
