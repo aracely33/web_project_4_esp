@@ -1,8 +1,7 @@
-let profileEditButton = document.querySelector(".profile__info-edit-button");
-console.log(profileEditButton);
-
-let popup = document.querySelector(".popup");
-console.log(popup);
+const profileEditButton = document.querySelector(".profile__info-edit-button");
+const popup = document.querySelector(".popup");
+const closeButton = document.querySelector(".close-button");
+const formElement = document.querySelector(".form");
 
 function handleprofileEditButtonClick() {
   let popup = document.querySelector(".popup");
@@ -10,18 +9,9 @@ function handleprofileEditButtonClick() {
   popup.classList.add("popup_opened");
 }
 
-profileEditButton.addEventListener("click", handleprofileEditButtonClick);
-
-let closeButton = document.querySelector(".close-button");
-
 function handleCloseButtonClick() {
   popup.classList.remove("popup_opened");
 }
-
-closeButton.addEventListener("click", handleCloseButtonClick);
-
-let formElement = document.querySelector(".form");
-console.log(formElement);
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -40,6 +30,9 @@ function handleProfileFormSubmit(evt) {
 
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
+  handleCloseButtonClick();
 }
 
+profileEditButton.addEventListener("click", handleprofileEditButtonClick);
+closeButton.addEventListener("click", handleCloseButtonClick);
 formElement.addEventListener("submit", handleProfileFormSubmit);

@@ -14,6 +14,15 @@
   opacity: 0.6;
 }
 
+@media screen and (max-width: 580px) {
+  .close-button {
+    min-width: 19px;
+    min-height: 19px;
+    top: -19.62px;
+    right: -14px;
+  }
+}
+
 @media screen and (max-width: 321px) {
   .close-button {
     min-width: 26px;

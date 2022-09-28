@@ -2,6 +2,7 @@
   background-image: url(../../../images/Add-Button1280px.svg);
   background-color: #000;
   background-size: contain;
+  -ms-flex-item-align: center;
   align-self: center;
   background-repeat: no-repeat;
   width: 100%;
