@@ -4,8 +4,7 @@ const closeButton = document.querySelector(".close-button");
 const formElement = document.querySelector(".form");
 
 function handleprofileEditButtonClick() {
-  let popup = document.querySelector(".popup");
-  console.log(popup);
+  const popup = document.querySelector(".popup");
   popup.classList.add("popup_opened");
 }
 
@@ -15,18 +14,13 @@ function handleCloseButtonClick() {
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  let nameInput = document.querySelector(".form__input_info-name");
-  console.log(nameInput);
-  let jobInput = document.querySelector(".form__input_info-occupation");
-  console.log(jobInput);
-
+  const nameInput = document.querySelector(".form__input_info-name");
+  const jobInput = document.querySelector(".form__input_info-occupation");
   nameInput.value;
   jobInput.value;
 
-  let profileName = document.querySelector(".profile__info-name");
-  console.log(profileName);
-  let profileOccupation = document.querySelector(".profile__info-occupation");
-  console.log(profileOccupation);
+  const profileName = document.querySelector(".profile__info-name");
+  const profileOccupation = document.querySelector(".profile__info-occupation");
 
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
