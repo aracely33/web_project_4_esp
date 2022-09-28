@@ -6,6 +6,7 @@
   background-size: contain;
   width: 21px;
   height: 19px;
+  -ms-flex-item-align: center;
   align-self: center;
 }
 
