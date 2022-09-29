@@ -12,7 +12,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 521px) {
+@media screen and (max-width: 521px) and (min-width: 321px) {
   .profile__avatar-container {
     min-width: 60px;
     min-height: 60px;

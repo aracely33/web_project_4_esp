@@ -8,6 +8,13 @@
   padding: 0;
 }
 
+@media screen and (max-width: 500px) and(min-width:321px) {
+  .profile__add-button {
+    min-width: 28px;
+    min-height: 28px;
+  }
+}
+
 @media screen and (max-width: 321px) {
   .profile__button-container {
     width: 100%;
