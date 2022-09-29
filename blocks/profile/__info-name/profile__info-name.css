@@ -6,6 +6,9 @@
   line-height: 1.14;
   color: #ffffff;
   width: 89.8795%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   margin: 0;
   padding: 0;
 }
