@@ -22,6 +22,7 @@
 
 @import url(../blocks/gallery/gallery.css);
 @import url(../blocks/item/item.css);
+@import url(../blocks/item/__trash-button/item__trash-button.css);
 @import url(../blocks/item/__place/item__place.css);
 @import url(../blocks/item/__place-info/item__place-info.css);
 @import url(../blocks/item/__place-info-container/item__place-info-container.css);

@@ -41,109 +41,7 @@
         </div>
       </div>
 
-      <div class="gallery">
-        <div class="item">
-          <img
-            class="item__place"
-            src="./images/Yosemite-min.jpg"
-            alt="Caudal de agua helada atravesando el bosque"
-          />
-          <div class="item__place-info">
-            <div class="item__place-info-container">
-              <p class="item__place-info-name">Valle de Yosemite</p>
-              <button
-                type="button"
-                class="item__place-like-button pointer"
-              ></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img
-            class="item__place"
-            src="./images/LagoLouise-min.jpg"
-            alt="Hermoso lago color turquesa"
-          />
-          <div class="item__place-info">
-            <div class="item__place-info-container">
-              <p class="item__place-info-name">Lago Louise</p>
-              <button
-                type="button"
-                class="item__place-like-button pointer"
-              ></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img
-            class="item__place"
-            src="./images/MontañasCalvas-min.jpg"
-            alt="Montañas calvas al amancer"
-          />
-          <div class="item__place-info">
-            <div class="item__place-info-container">
-              <p class="item__place-info-name">Montañas Calvas</p>
-              <button
-                type="button"
-                class="item__place-like-button pointer"
-              ></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img
-            class="item__place"
-            src="./images/latemar-min.jpg"
-            alt="Montañas en deshielo con estrellas al fondo"
-          />
-          <div class="item__place-info">
-            <div class="item__place-info-container">
-              <p class="item__place-info-name">Latemar</p>
-              <button
-                type="button"
-                class="item__place-like-button pointer"
-              ></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img
-            class="item__place"
-            src="./images/vanoise-min.jpg"
-            alt="Lago con montañas a los lados"
-          />
-          <div class="item__place-info">
-            <div class="item__place-info-container">
-              <p class="item__place-info-name">Vanoise National</p>
-              <button
-                type="button"
-                class="item__place-like-button pointer"
-              ></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img
-            class="item__place"
-            src="./images/lagoDiBraises-min.jpg"
-            alt="Casa de madera sobre el lago"
-          />
-          <div class="item__place-info">
-            <div class="item__place-info-container">
-              <p class="item__place-info-name">Lago di Braies</p>
-              <button
-                type="button"
-                class="item__place-like-button pointer"
-              ></button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="gallery"></div>
 
       <footer class="footer">
         <p class="footer">© 2021 Alrededor de los EEUU</p>
@@ -177,6 +75,21 @@
         </div>
       </div>
     </main>
+    <template class="template__place">
+      <div class="item">
+        <button type="button" class="item__trash-button"></button>
+        <img class="item__place" src="" alt="" />
+        <div class="item__place-info">
+          <div class="item__place-info-container">
+            <p class="item__place-info-name"></p>
+            <button
+              type="button"
+              class="item__place-like-button pointer"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>

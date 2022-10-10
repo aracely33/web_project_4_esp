@@ -1,5 +1,5 @@
 .item__place-info-container {
-  width: 87.234%;
+  max-width: 282px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

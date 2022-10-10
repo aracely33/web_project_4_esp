@@ -4,11 +4,9 @@
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  width: 68.75%;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  gap: 20px 17px;
+  width: 68.9069%;
+  gap: 21px 18px;
   border-radius: 10px;
   margin: 0 0 68px 0;
 }
