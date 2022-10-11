@@ -9,6 +9,8 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
+  transition: visibility 0s, opacity 0.6s;
+  z-index: 10;
   display: none; /*flex*/
   -webkit-box-pack: center;
   -ms-flex-pack: center;
