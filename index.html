@@ -48,7 +48,7 @@
       </footer>
     </main>
 
-    <div class="popup popup_new_profile">
+    <div class="popup">
       <div class="popup__container">
         <form class="form">
           <fieldset class="form__fields">
@@ -72,45 +72,49 @@
           </fieldset>
 
           <fieldset class="form__fields">
-            <button class="form__save-profile-button pointer" type="submit">
-              Guardar
-            </button>
+            <button class="form__Button pointer" type="submit">Guardar</button>
           </fieldset>
         </form>
-        <div class="close-button pointer"></div>
+        <button class="close-button pointer" type="button"></button>
       </div>
     </div>
 
-    <div class="popup popup_new_place">
+    <div class="popup popup-newplace">
       <div class="popup__container">
-        <form class="form">
+        <form class="form form_newplace">
           <fieldset class="form__fields">
             <h2 class="form__heading">Nuevo lugar</h2>
             <input
               type="text"
-              id="nombre"
-              class="form__input form__input_info-name"
-              placeholder="Nombre"
-              name="nombre"
-              value="Jaques Costeau"
+              id="title"
+              class="form__input form__input_newplace-title"
+              placeholder="Título"
+              name="title"
+              value=""
             />
             <input
               type="text"
-              id="ocupación"
-              class="form__input form__input_info-occupation"
-              placeholder="Acerca de mi"
-              name="ocupación"
-              value="Explorer"
+              id="image"
+              class="form__input form__input_newplace-url"
+              placeholder="Enlace a la imagen"
+              name="image"
+              value=""
             />
           </fieldset>
 
           <fieldset class="form__fields">
-            <button class="form__save-profile-button pointer" type="submit">
+            <button
+              class="form__Button form__Button_save-place pointer"
+              type="submit"
+            >
               Crear
             </button>
           </fieldset>
         </form>
-        <div class="close-button pointer"></div>
+        <button
+          class="close-button close-button_for-place pointer"
+          type="button"
+        ></button>
       </div>
     </div>
 
