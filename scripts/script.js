@@ -1,36 +1,22 @@
-//Botón de profileedit
 const profileEditButton = document.querySelector(".profile__info-edit-button");
 const popup = document.querySelector(".popup");
 const newPlacePopup = document.querySelector(".popup-newplace");
 const popupImage = document.querySelector(".popup_image");
-
 const closeButton = document.querySelector(".close-button");
-
 const closeNewPlaceForm = document.querySelector(".close-button_for-place");
 const closeImageButton = document.querySelector(".close-button_for-image");
-console.log(closeImageButton);
-
 const formElement = document.querySelector(".form");
-
 const nameInput = document.querySelector(".form__input_info-name");
 const jobInput = document.querySelector(".form__input_info-occupation");
-
 const profileName = document.querySelector(".profile__info-name");
 const profileOccupation = document.querySelector(".profile__info-occupation");
-
 const newPlaceSubmitButton = document.querySelector(".form__Button_save-place");
-console.log(newPlaceSubmitButton);
-
 const AddnewPlaceButton = document.querySelector(".profile__add-button");
 const NewPlaceForm = document.querySelector(".form_newplace");
-
-//declarar al contenedor de los items con las imágenes
 const placesContainer = document.querySelector(".gallery");
-//Buscar el esqueleto del nuevo lugar en template__place
 const TemplatePlace = document
   .querySelector(".template__place")
   .content.querySelector(".item");
-console.log(TemplatePlace); //borrar esto
 
 const initialPlacesInfo = [
   {
@@ -60,9 +46,7 @@ const initialPlacesInfo = [
 ];
 
 const handleClickPlaces = function (event) {
-  //console.log("click", event.target);
   if (event.target.tagName === "IMG") {
-    //console.log(popupImage.querySelector(".popup__image").src);
     event.target.title = popupImage.querySelector(
       ".popup__imagedescription"
     ).textContent;
@@ -75,13 +59,21 @@ const handleClickPlaces = function (event) {
   }
 };
 
-placesContainer.addEventListener("click", handleClickPlaces);
-
 function newPlace(title, url) {
   const newPlace = TemplatePlace.cloneNode(true);
   newPlace.querySelector(".item__place").src = url;
   newPlace.querySelector(".item__place-info-name").textContent = title;
   newPlace.setAttribute("description", title);
+  newPlace
+    .querySelector(".item__place-like-button")
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("item__place-like-button_active");
+    });
+  newPlace
+    .querySelector(".item__trash-button")
+    .addEventListener("click", function (evt) {
+      console.log(evt);
+    });
 
   return newPlace;
 }
@@ -133,15 +125,8 @@ function handleNewPlaceFormSubmit(evt) {
 AddnewPlaceButton.addEventListener("click", handleAddPlaceButtonClick);
 profileEditButton.addEventListener("click", handleprofileEditButtonClick);
 closeButton.addEventListener("click", handleCloseButtonClick);
+placesContainer.addEventListener("click", handleClickPlaces);
 closeNewPlaceForm.addEventListener("click", handleCloseFormPlaceButtonClick);
 closeImageButton.addEventListener("click", handleCloseImageClick);
 formElement.addEventListener("submit", handleProfileFormSubmit);
-
 NewPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
-
-//funcionalidad para agregar un nuevo item o lugar
-//1.Colocar el evento del formulario
-//2.- Mostrar el popup de formulario de newplace
-//3.-el ususario pone la información en los campos
-//4.-da click en guardar
-//form_newplace
