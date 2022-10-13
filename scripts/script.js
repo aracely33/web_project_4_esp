@@ -72,7 +72,7 @@ function newPlace(title, url) {
   newPlace
     .querySelector(".item__trash-button")
     .addEventListener("click", function (evt) {
-      console.log(evt);
+      evt.target.parentNode.remove();
     });
 
   return newPlace;
