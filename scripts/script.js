@@ -2,10 +2,13 @@
 const profileEditButton = document.querySelector(".profile__info-edit-button");
 const popup = document.querySelector(".popup");
 const newPlacePopup = document.querySelector(".popup-newplace");
+const popupImage = document.querySelector(".popup_image");
 
 const closeButton = document.querySelector(".close-button");
 
 const closeNewPlaceForm = document.querySelector(".close-button_for-place");
+const closeImageButton = document.querySelector(".close-button_for-image");
+console.log(closeImageButton);
 
 const formElement = document.querySelector(".form");
 
@@ -56,10 +59,30 @@ const initialPlacesInfo = [
   },
 ];
 
+const handleClickPlaces = function (event) {
+  //console.log("click", event.target);
+  if (event.target.tagName === "IMG") {
+    //console.log(popupImage.querySelector(".popup__image").src);
+    event.target.title = popupImage.querySelector(
+      ".popup__imagedescription"
+    ).textContent;
+    popupImage.querySelector(".popup__image").src = event.target.src;
+    popupImage.classList.add("popup_opened");
+    const ImgDescription =
+      event.target.parentElement.getAttribute("description");
+    document.querySelector(".popup__imagedescription").textContent =
+      ImgDescription;
+  }
+};
+
+placesContainer.addEventListener("click", handleClickPlaces);
+
 function newPlace(title, url) {
   const newPlace = TemplatePlace.cloneNode(true);
   newPlace.querySelector(".item__place").src = url;
   newPlace.querySelector(".item__place-info-name").textContent = title;
+  newPlace.setAttribute("description", title);
+
   return newPlace;
 }
 
@@ -75,8 +98,13 @@ function handleprofileEditButtonClick() {
 function handleCloseButtonClick() {
   popup.classList.remove("popup_opened");
 }
+
 function handleCloseFormPlaceButtonClick() {
   newPlacePopup.classList.remove("popup-newplace_show");
+}
+
+function handleCloseImageClick() {
+  popupImage.classList.remove("popup_opened");
 }
 
 function handleAddPlaceButtonClick() {
@@ -96,12 +124,9 @@ function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
   const title = document.querySelector("#title").value;
   const url = document.querySelector("#image").value;
-
   const NewItem = newPlace(title, url);
   placesContainer.prepend(NewItem);
-
   newPlacePopup.classList.remove("popup-newplace_show");
-
   evt.target.reset();
 }
 
@@ -109,6 +134,7 @@ AddnewPlaceButton.addEventListener("click", handleAddPlaceButtonClick);
 profileEditButton.addEventListener("click", handleprofileEditButtonClick);
 closeButton.addEventListener("click", handleCloseButtonClick);
 closeNewPlaceForm.addEventListener("click", handleCloseFormPlaceButtonClick);
+closeImageButton.addEventListener("click", handleCloseImageClick);
 formElement.addEventListener("submit", handleProfileFormSubmit);
 
 NewPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);

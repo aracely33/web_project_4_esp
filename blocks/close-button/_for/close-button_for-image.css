@@ -1,3 +1,4 @@
 .close-button_for-image {
-  border: none;
+  position: absolute;
+  top: 0px;
 }
