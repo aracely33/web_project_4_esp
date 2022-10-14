@@ -1,5 +1,6 @@
 .form__Button {
   width: 100%;
+  max-width: -webkit-fill-available;
   background: #000000;
   border-radius: 2px;
   font-family: "Inter";
