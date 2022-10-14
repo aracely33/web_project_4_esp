@@ -1,7 +1,6 @@
 .form_newplace {
   display: flex;
   min-width: 358px;
-  padding: 0;
   justify-content: center;
   align-items: center;
 }
