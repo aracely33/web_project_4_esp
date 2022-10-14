@@ -9,9 +9,12 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  transition: visibility 0s, opacity 0.5s linear;
-  z-index: 10;
-  display: none;
+  -webkit-transition: opacity 1s ease-out;
+  -o-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
