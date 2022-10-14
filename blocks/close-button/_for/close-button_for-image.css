@@ -8,7 +8,7 @@
 @media screen and (max-width: 803px) {
   .close-button_for-image {
     min-width: 35px;
-    min-height: 35x;
+    min-height: 35px;
     top: -35px;
     right: -35px;
   }
@@ -17,7 +17,7 @@
 @media screen and (max-width: 580px) {
   .close-button_for-image {
     min-width: 30px;
-    min-height: 30x;
+    min-height: 30px;
     top: -30px;
     right: -30px;
   }
@@ -26,7 +26,7 @@
 @media screen and (max-width: 500px) {
   .close-button_for-image {
     min-width: 25px;
-    min-height: 25x;
+    min-height: 25px;
     top: -25px;
     right: -25px;
   }
@@ -35,7 +35,7 @@
 @media screen and (max-width: 321px) {
   .close-button_for-image {
     min-width: 30px;
-    min-height: 30x;
+    min-height: 30px;
     top: -30px;
     right: -30px;
   }
