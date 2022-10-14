@@ -1,5 +1,5 @@
-.form__save-profile-button {
-  width: 83.25%;
+.form__Button {
+  width: 100%;
   background: #000000;
   border-radius: 2px;
   font-family: "Inter";
@@ -14,14 +14,13 @@
   align-items: center;
 }
 
-.form__save-profile-button:hover {
+.form__Button:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 321px) {
-  .form__save-profile-button {
-    width: 84.39%;
-    font-size: 17px;
+  .form__Button {
+    width: 100%;
     padding: 14px 31.56% 14px 31.91%;
   }
 }

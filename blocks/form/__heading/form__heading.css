@@ -1,9 +1,16 @@
 .form__heading {
-  width: 76.744%;
-  margin: 0 14.88% 54px 8.37%;
+  width: 92.17%;
+  margin: 0 0 54px 0;
   font-family: "Inter";
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
   color: #000000;
+}
+
+@media screen and (max-width: 321px) {
+  .form__heading {
+    margin: 0 0 30px 0;
+    font-size: 15px;
+  }
 }

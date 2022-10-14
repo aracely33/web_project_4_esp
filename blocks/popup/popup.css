@@ -9,7 +9,9 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  display: none; /*flex*/
+  transition: visibility 0s, opacity 0.5s linear;
+  z-index: 10;
+  display: none;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
