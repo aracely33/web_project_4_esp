@@ -4,8 +4,8 @@
   border: none;
   background-repeat: no-repeat;
   background-size: contain;
-  width: 21px;
-  height: 19px;
+  min-width: 22px;
+  min-height: 19px;
   -ms-flex-item-align: center;
   align-self: center;
   margin: 0;
