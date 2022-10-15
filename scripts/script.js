@@ -101,12 +101,20 @@ function handleBigImageAppear(event) {
   imageDescription.textContent = ImgDescription;
 }
 
+function handleClosePopupClick(evt) {
+  if (evt.target.classList.contains("close-button")) {
+    popupImage.classList.remove("popup_opened");
+    popupProfileForm.classList.remove("popup_opened");
+    popupPlaceForm.classList.remove("popup_opened");
+  }
+}
+
 //AddEeventListeners para abrir y cerrar popups
 
 profileEditButton.addEventListener("click", handleOpenPopupClick);
 AddnewPlaceButton.addEventListener("click", handleOpenPopupClick);
 placesContainer.addEventListener("click", handleOpenPopupClick);
-//closeButton.addEventListener("click", handleClosePopupClick);
+document.addEventListener("click", handleClosePopupClick);
 //formElement.addEventListener("submit", handleProfileFormSubmit);
 //NewPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
 
