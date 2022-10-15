@@ -1,19 +1,31 @@
-const profileEditButton = document.querySelector(".profile__info-edit-button");
+//cosntantes para abrir y cerrar popUps
 const popup = document.querySelector(".popup");
-const newPlacePopup = document.querySelector(".popup-newplace");
-const popupImage = document.querySelector(".popup_image");
 const closeButton = document.querySelector(".close-button");
+//profile
+const popupProfileForm = document.querySelector(".popup_type-form-new-profile");
+const profileEditButton = document.querySelector(".profile__info-edit-button");
+//nuevo lugar
+const popupPlaceForm = document.querySelector(".popup_type-form-new-place");
+const AddnewPlaceButton = document.querySelector(".profile__add-button");
+
 const closeNewPlaceForm = document.querySelector(".close-button_for-place");
+//Imagen
+const popupImage = document.querySelector(".popup_type-image");
 const closeImageButton = document.querySelector(".close-button_for-image");
+const imageDescription = document.querySelector(".popup__imagedescription");
+const image = document.querySelector(".popup__image");
+//constantes para llenar formulario
 const formElement = document.querySelector(".form");
+//New Profile
 const nameInput = document.querySelector(".form__input_info-name");
 const jobInput = document.querySelector(".form__input_info-occupation");
 const profileName = document.querySelector(".profile__info-name");
 const profileOccupation = document.querySelector(".profile__info-occupation");
-const newPlaceSubmitButton = document.querySelector(".form__Button_save-place");
-const AddnewPlaceButton = document.querySelector(".profile__add-button");
+//NeW Place
 const NewPlaceForm = document.querySelector(".form_newplace");
+const newPlaceSubmitButton = document.querySelector(".form__Button_save-place");
 const placesContainer = document.querySelector(".gallery");
+
 const TemplatePlace = document
   .querySelector(".template__place")
   .content.querySelector(".item");
@@ -45,20 +57,6 @@ const initialPlacesInfo = [
   },
 ];
 
-const handleClickPlaces = function (event) {
-  if (event.target.tagName === "IMG") {
-    event.target.title = popupImage.querySelector(
-      ".popup__imagedescription"
-    ).textContent;
-    popupImage.querySelector(".popup__image").src = event.target.src;
-    popupImage.classList.add("popup_opened");
-    const ImgDescription =
-      event.target.parentElement.getAttribute("description");
-    document.querySelector(".popup__imagedescription").textContent =
-      ImgDescription;
-  }
-};
-
 function newPlace(title, url) {
   const newPlace = TemplatePlace.cloneNode(true);
   newPlace.querySelector(".item__place").src = url;
@@ -83,25 +81,37 @@ initialPlacesInfo.forEach((place) => {
   placesContainer.prepend(NewItem);
 });
 
-function handleprofileEditButtonClick() {
-  popup.classList.add("popup_opened");
+//funciones para abrir y cerrar popUps
+
+function handleOpenPopupClick(evt) {
+  if (evt.target.classList.contains("profile__info-edit-button")) {
+    popupProfileForm.classList.add("popup_opened");
+  } else if (evt.target.classList.contains("profile__add-button")) {
+    popupPlaceForm.classList.add("popup_opened");
+  } else if (evt.target.tagName === "IMG") {
+    handleBigImageAppear(evt);
+  }
 }
 
-function handleCloseButtonClick() {
-  popup.classList.remove("popup_opened");
+function handleBigImageAppear(event) {
+  event.target.title = imageDescription.textContent;
+  image.src = event.target.src;
+  popupImage.classList.add("popup_opened");
+  const ImgDescription = event.target.parentElement.getAttribute("description");
+  imageDescription.textContent = ImgDescription;
 }
 
-function handleCloseFormPlaceButtonClick() {
-  newPlacePopup.classList.remove("popup-newplace_show");
-}
+//AddEeventListeners para abrir y cerrar popups
 
-function handleCloseImageClick() {
-  popupImage.classList.remove("popup_opened");
-}
+profileEditButton.addEventListener("click", handleOpenPopupClick);
+AddnewPlaceButton.addEventListener("click", handleOpenPopupClick);
+placesContainer.addEventListener("click", handleOpenPopupClick);
+//closeButton.addEventListener("click", handleClosePopupClick);
+//formElement.addEventListener("submit", handleProfileFormSubmit);
+//NewPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
 
-function handleAddPlaceButtonClick() {
-  newPlacePopup.classList.add("popup-newplace_show");
-}
+/*
+
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -121,12 +131,18 @@ function handleNewPlaceFormSubmit(evt) {
   newPlacePopup.classList.remove("popup-newplace_show");
   evt.target.reset();
 }
+*/
 
-AddnewPlaceButton.addEventListener("click", handleAddPlaceButtonClick);
-profileEditButton.addEventListener("click", handleprofileEditButtonClick);
-closeButton.addEventListener("click", handleCloseButtonClick);
-placesContainer.addEventListener("click", handleClickPlaces);
-closeNewPlaceForm.addEventListener("click", handleCloseFormPlaceButtonClick);
-closeImageButton.addEventListener("click", handleCloseImageClick);
-formElement.addEventListener("submit", handleProfileFormSubmit);
-NewPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
+/*function handleClickPlaces(event) {
+  if (event.target.tagName === "IMG") {
+    event.target.title = popupImage.querySelector(
+      ".popup__imagedescription"
+    ).textContent;
+    popupImage.querySelector(".popup__image").src = event.target.src;
+    popupImage.classList.add("popup_opened");
+    const ImgDescription =
+      event.target.parentElement.getAttribute("description");
+    document.querySelector(".popup__imagedescription").textContent =
+      ImgDescription;
+  }
+}*/
