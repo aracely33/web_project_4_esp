@@ -1,4 +1,3 @@
-const popup = document.querySelector(".popup");
 const closeButtons = document.querySelectorAll(".close-button");
 const popupProfileForm = document.querySelector(".popup_type-form-new-profile");
 const profileEditButton = document.querySelector(".profile__info-edit-button");
@@ -115,7 +114,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
-  closePopup(popup);
+  closePopup(popupProfileForm);
 }
 
 profileEditButton.addEventListener("click", handleOpenPopupClick);
