@@ -52,8 +52,6 @@
 @import url(../blocks/form/__input/_newplace/form__input_newplace-title.css);
 @import url(../blocks/form/__input/_newplace/form__input_newplace-url.css);
 @import url(../blocks/form/__Button/form__Button.css);
-@import url(../blocks/form/__Button/_save/form__Button_save-profile.css);
-@import url(../blocks/form/__Button/_save/form__Button_save-place.css);
 
 @import url(../blocks/close-button/close-button.css);
 

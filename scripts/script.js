@@ -1,29 +1,17 @@
-//cosntantes para abrir y cerrar popUps popup-newplace
 const popup = document.querySelector(".popup");
-//const closeButton = document.querySelector(".close-button");
 const closeButtons = document.querySelectorAll(".close-button");
-
-//profile
 const popupProfileForm = document.querySelector(".popup_type-form-new-profile");
 const profileEditButton = document.querySelector(".profile__info-edit-button");
-//nuevo lugar
 const popupPlaceForm = document.querySelector(".popup_type-form-new-place");
 const addnewPlaceButton = document.querySelector(".profile__add-button");
-
-const closeNewPlaceForm = document.querySelector(".close-button_for-place");
-//Imagen
 const popupImage = document.querySelector(".popup_type-image");
-const closeImageButton = document.querySelector(".close-button_for-image");
 const imageDescription = document.querySelector(".popup__imagedescription");
 const image = document.querySelector(".popup__image");
-//constantes para llenar formulario
 const newProfileForm = document.querySelector(".form");
-//New Profile
 const nameInput = document.querySelector(".form__input_info-name");
 const jobInput = document.querySelector(".form__input_info-occupation");
 const profileName = document.querySelector(".profile__info-name");
 const profileOccupation = document.querySelector(".profile__info-occupation");
-//NeW Place
 const newPlaceForm = document.querySelector(".form_newplace");
 const placesContainer = document.querySelector(".gallery");
 const TemplatePlace = document
@@ -129,8 +117,6 @@ function handleProfileFormSubmit(evt) {
   profileOccupation.textContent = jobInput.value;
   closePopup(popup);
 }
-
-//AddEeventListeners para abrir y cerrar popups
 
 profileEditButton.addEventListener("click", handleOpenPopupClick);
 addnewPlaceButton.addEventListener("click", handleOpenPopupClick);
