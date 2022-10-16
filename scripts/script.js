@@ -86,7 +86,7 @@ function handleNewPlaceFormSubmit(evt) {
   const url = document.querySelector("#image").value;
   const newItem = cretateCard(title, url);
   placesContainer.prepend(newItem);
-  popupPlaceForm.classList.remove("popup_opened");
+  closePopup(popupPlaceForm);
   evt.target.reset();
 }
 
@@ -94,12 +94,19 @@ function handleNewPlaceFormSubmit(evt) {
 
 function handleOpenPopupClick(evt) {
   if (evt.target.classList.contains("profile__info-edit-button")) {
-    popupProfileForm.classList.add("popup_opened");
+    openPopup(popupProfileForm);
   } else if (evt.target.classList.contains("profile__add-button")) {
-    popupPlaceForm.classList.add("popup_opened");
+    openPopup(popupPlaceForm);
   } else if (evt.target.tagName === "IMG") {
     handleBigImageAppear(evt);
   }
+}
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
 }
 
 function handleBigImageAppear(event) {
@@ -107,14 +114,14 @@ function handleBigImageAppear(event) {
   image.src = event.target.src;
   const imageLegend = event.target.parentElement.getAttribute("description");
   imageDescription.textContent = imageLegend;
-  popupImage.classList.add("popup_opened");
+  openPopup(popupImage);
 }
 
 function handleClosePopupClick(evt) {
   if (evt.target.classList.contains("close-button")) {
-    popupImage.classList.remove("popup_opened");
-    popupProfileForm.classList.remove("popup_opened");
-    popupPlaceForm.classList.remove("popup_opened");
+    closePopup(popupImage);
+    closePopup(popupProfileForm);
+    closePopup(popupPlaceForm);
   }
 }
 
@@ -124,7 +131,7 @@ function handleProfileFormSubmit(evt) {
   jobInput.value;
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
-  popup.classList.remove("popup_opened");
+  closePopup(popup);
 }
 
 //AddEeventListeners para abrir y cerrar popups
