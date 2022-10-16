@@ -109,26 +109,28 @@ function handleClosePopupClick(evt) {
   }
 }
 
-//AddEeventListeners para abrir y cerrar popups
-
-profileEditButton.addEventListener("click", handleOpenPopupClick);
-AddnewPlaceButton.addEventListener("click", handleOpenPopupClick);
-placesContainer.addEventListener("click", handleOpenPopupClick);
-document.addEventListener("click", handleClosePopupClick);
-//formElement.addEventListener("submit", handleProfileFormSubmit);
-//NewPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
-
-/*
-
-
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   nameInput.value;
   jobInput.value;
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
-  handleCloseButtonClick();
+  popupProfileForm.classList.remove("popup_opened");
 }
+
+//AddEeventListeners para abrir y cerrar popups
+
+profileEditButton.addEventListener("click", handleOpenPopupClick);
+AddnewPlaceButton.addEventListener("click", handleOpenPopupClick);
+placesContainer.addEventListener("click", handleOpenPopupClick);
+document.addEventListener("click", handleClosePopupClick);
+formElement.addEventListener("submit", handleProfileFormSubmit);
+//NewPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
+
+/*
+
+
+
 
 function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
