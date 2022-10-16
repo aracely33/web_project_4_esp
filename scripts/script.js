@@ -1,4 +1,4 @@
-//cosntantes para abrir y cerrar popUps
+//cosntantes para abrir y cerrar popUps popup-newplace
 const popup = document.querySelector(".popup");
 const closeButton = document.querySelector(".close-button");
 //profile
@@ -6,7 +6,7 @@ const popupProfileForm = document.querySelector(".popup_type-form-new-profile");
 const profileEditButton = document.querySelector(".profile__info-edit-button");
 //nuevo lugar
 const popupPlaceForm = document.querySelector(".popup_type-form-new-place");
-const AddnewPlaceButton = document.querySelector(".profile__add-button");
+const addnewPlaceButton = document.querySelector(".profile__add-button");
 
 const closeNewPlaceForm = document.querySelector(".close-button_for-place");
 //Imagen
@@ -15,15 +15,14 @@ const closeImageButton = document.querySelector(".close-button_for-image");
 const imageDescription = document.querySelector(".popup__imagedescription");
 const image = document.querySelector(".popup__image");
 //constantes para llenar formulario
-const formElement = document.querySelector(".form");
+const newProfileForm = document.querySelector(".form");
 //New Profile
 const nameInput = document.querySelector(".form__input_info-name");
 const jobInput = document.querySelector(".form__input_info-occupation");
 const profileName = document.querySelector(".profile__info-name");
 const profileOccupation = document.querySelector(".profile__info-occupation");
 //NeW Place
-const NewPlaceForm = document.querySelector(".form_newplace");
-const newPlaceSubmitButton = document.querySelector(".form__Button_save-place");
+const newPlaceForm = document.querySelector(".form_newplace");
 const placesContainer = document.querySelector(".gallery");
 
 const TemplatePlace = document
@@ -58,28 +57,38 @@ const initialPlacesInfo = [
 ];
 
 function newPlace(title, url) {
-  const newPlace = TemplatePlace.cloneNode(true);
-  newPlace.querySelector(".item__place").src = url;
-  newPlace.querySelector(".item__place-info-name").textContent = title;
-  newPlace.setAttribute("description", title);
-  newPlace
+  const newPlaceCard = TemplatePlace.cloneNode(true);
+  newPlaceCard.querySelector(".item__place").src = url;
+  newPlaceCard.querySelector(".item__place-info-name").textContent = title;
+  newPlaceCard.setAttribute("description", title);
+  newPlaceCard
     .querySelector(".item__place-like-button")
     .addEventListener("click", function (evt) {
       evt.target.classList.toggle("item__place-like-button_active");
     });
-  newPlace
+  newPlaceCard
     .querySelector(".item__trash-button")
     .addEventListener("click", function (evt) {
       evt.target.parentNode.remove();
     });
 
-  return newPlace;
+  return newPlaceCard;
 }
 
 initialPlacesInfo.forEach((place) => {
-  const NewItem = newPlace(place.title, place.url);
-  placesContainer.prepend(NewItem);
+  const newItemPlace = newPlace(place.title, place.url);
+  placesContainer.prepend(newItemPlace);
 });
+
+function handleNewPlaceFormSubmit(evt) {
+  evt.preventDefault();
+  const title = document.querySelector("#title").value;
+  const url = document.querySelector("#image").value;
+  const newItem = newPlace(title, url);
+  placesContainer.prepend(newItem);
+  popupPlaceForm.classList.remove("popup_opened");
+  evt.target.reset();
+}
 
 //funciones para abrir y cerrar popUps
 
@@ -96,9 +105,9 @@ function handleOpenPopupClick(evt) {
 function handleBigImageAppear(event) {
   event.target.title = imageDescription.textContent;
   image.src = event.target.src;
+  const imageLegend = event.target.parentElement.getAttribute("description");
+  imageDescription.textContent = imageLegend;
   popupImage.classList.add("popup_opened");
-  const ImgDescription = event.target.parentElement.getAttribute("description");
-  imageDescription.textContent = ImgDescription;
 }
 
 function handleClosePopupClick(evt) {
@@ -118,24 +127,11 @@ function handleProfileFormSubmit(evt) {
   popup.classList.remove("popup_opened");
 }
 
-function handleNewPlaceFormSubmit(evt) {
-  evt.preventDefault();
-  const title = document.querySelector("#title").value;
-  console.log(title);
-  const url = document.querySelector("#image").value;
-  console.log(url);
-  const NewItem = newPlace(title, url);
-  console.log(NewItem);
-  placesContainer.prepend(NewItem);
-  popupPlaceForm.classList.remove("popup_opened");
-  evt.target.reset();
-}
-
 //AddEeventListeners para abrir y cerrar popups
 
 profileEditButton.addEventListener("click", handleOpenPopupClick);
-AddnewPlaceButton.addEventListener("click", handleOpenPopupClick);
+addnewPlaceButton.addEventListener("click", handleOpenPopupClick);
 placesContainer.addEventListener("click", handleOpenPopupClick);
 document.addEventListener("click", handleClosePopupClick);
-formElement.addEventListener("submit", handleProfileFormSubmit);
-NewPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
+newProfileForm.addEventListener("submit", handleProfileFormSubmit);
+newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
