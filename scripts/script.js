@@ -1,6 +1,8 @@
 //cosntantes para abrir y cerrar popUps popup-newplace
 const popup = document.querySelector(".popup");
-const closeButton = document.querySelector(".close-button");
+//const closeButton = document.querySelector(".close-button");
+const closeButtons = document.querySelectorAll(".close-button");
+
 //profile
 const popupProfileForm = document.querySelector(".popup_type-form-new-profile");
 const profileEditButton = document.querySelector(".profile__info-edit-button");
@@ -55,7 +57,10 @@ const initialPlacesInfo = [
   },
 ];
 
-function cretateCard(title, url) {
+//const titleImage = document.querySelector("#title");
+//const urlImage = document.querySelector("#image");
+
+function createCard(title, url) {
   const newPlaceCard = TemplatePlace.cloneNode(true);
   newPlaceCard.querySelector(".item__place").src = url;
   newPlaceCard.querySelector(".item__place-info-name").textContent = title;
@@ -76,7 +81,7 @@ function cretateCard(title, url) {
 }
 
 initialPlacesInfo.forEach((place) => {
-  const newItemPlace = cretateCard(place.title, place.url);
+  const newItemPlace = createCard(place.title, place.url);
   placesContainer.prepend(newItemPlace);
 });
 
@@ -84,13 +89,16 @@ function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
   const title = document.querySelector("#title").value;
   const url = document.querySelector("#image").value;
-  const newItem = cretateCard(title, url);
+  const newItem = createCard(title, url);
   placesContainer.prepend(newItem);
   closePopup(popupPlaceForm);
   evt.target.reset();
 }
 
-//funciones para abrir y cerrar popUps
+closeButtons.forEach((button) => {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => closePopup(popup));
+});
 
 function handleOpenPopupClick(evt) {
   if (evt.target.classList.contains("profile__info-edit-button")) {
@@ -117,14 +125,6 @@ function handleBigImageAppear(event) {
   openPopup(popupImage);
 }
 
-function handleClosePopupClick(evt) {
-  if (evt.target.classList.contains("close-button")) {
-    closePopup(popupImage);
-    closePopup(popupProfileForm);
-    closePopup(popupPlaceForm);
-  }
-}
-
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
@@ -136,7 +136,6 @@ function handleProfileFormSubmit(evt) {
 
 profileEditButton.addEventListener("click", handleOpenPopupClick);
 addnewPlaceButton.addEventListener("click", handleOpenPopupClick);
-placesContainer.addEventListener("click", handleOpenPopupClick);
-document.addEventListener("click", handleClosePopupClick);
+document.addEventListener("click", handleOpenPopupClick);
 newProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
