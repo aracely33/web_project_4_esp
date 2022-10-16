@@ -57,8 +57,8 @@ const initialPlacesInfo = [
   },
 ];
 
-//const titleImage = document.querySelector("#title");
-//const urlImage = document.querySelector("#image");
+const titleImage = document.querySelector("#title");
+const urlImage = document.querySelector("#image");
 
 function createCard(title, url) {
   const newPlaceCard = TemplatePlace.cloneNode(true);
@@ -87,9 +87,7 @@ initialPlacesInfo.forEach((place) => {
 
 function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
-  const title = document.querySelector("#title").value;
-  const url = document.querySelector("#image").value;
-  const newItem = createCard(title, url);
+  const newItem = createCard(titleImage.value, urlImage.value);
   placesContainer.prepend(newItem);
   closePopup(popupPlaceForm);
   evt.target.reset();
