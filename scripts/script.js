@@ -65,10 +65,11 @@ function cretateCard(title, url) {
     .addEventListener("click", function (evt) {
       evt.target.classList.toggle("item__place-like-button_active");
     });
+
   newPlaceCard
     .querySelector(".item__trash-button")
     .addEventListener("click", function (evt) {
-      evt.target.parentNode.remove();
+      evt.target.closest(".item").remove();
     });
 
   return newPlaceCard;
