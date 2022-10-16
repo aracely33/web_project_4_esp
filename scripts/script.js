@@ -2,7 +2,7 @@ const closeButtons = document.querySelectorAll(".close-button");
 const popupProfileForm = document.querySelector(".popup_type-form-new-profile");
 const profileEditButton = document.querySelector(".profile__info-edit-button");
 const popupPlaceForm = document.querySelector(".popup_type-form-new-place");
-const addnewPlaceButton = document.querySelector(".profile__add-button");
+const addNewPlaceButton = document.querySelector(".profile__add-button");
 const popupImage = document.querySelector(".popup_type-image");
 const imageDescription = document.querySelector(".popup__imagedescription");
 const image = document.querySelector(".popup__image");
@@ -13,7 +13,7 @@ const profileName = document.querySelector(".profile__info-name");
 const profileOccupation = document.querySelector(".profile__info-occupation");
 const newPlaceForm = document.querySelector(".form_newplace");
 const placesContainer = document.querySelector(".gallery");
-const TemplatePlace = document
+const templatePlace = document
   .querySelector(".template__place")
   .content.querySelector(".item");
 
@@ -48,8 +48,10 @@ const titleImage = document.querySelector("#title");
 const urlImage = document.querySelector("#image");
 
 function createCard(title, url) {
-  const newPlaceCard = TemplatePlace.cloneNode(true);
-  newPlaceCard.querySelector(".item__place").src = url;
+  const newPlaceCard = templatePlace.cloneNode(true);
+  const cardImage = newPlaceCard.querySelector(".item__place");
+  cardImage.src = url;
+  cardImage.alt = title;
   newPlaceCard.querySelector(".item__place-info-name").textContent = title;
   newPlaceCard.setAttribute("description", title);
   newPlaceCard
@@ -118,7 +120,7 @@ function handleProfileFormSubmit(evt) {
 }
 
 profileEditButton.addEventListener("click", handleOpenPopupClick);
-addnewPlaceButton.addEventListener("click", handleOpenPopupClick);
+addNewPlaceButton.addEventListener("click", handleOpenPopupClick);
 document.addEventListener("click", handleOpenPopupClick);
 newProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
