@@ -24,7 +24,6 @@ const profileOccupation = document.querySelector(".profile__info-occupation");
 //NeW Place
 const newPlaceForm = document.querySelector(".form_newplace");
 const placesContainer = document.querySelector(".gallery");
-
 const TemplatePlace = document
   .querySelector(".template__place")
   .content.querySelector(".item");
@@ -56,7 +55,7 @@ const initialPlacesInfo = [
   },
 ];
 
-function newPlace(title, url) {
+function cretateCard(title, url) {
   const newPlaceCard = TemplatePlace.cloneNode(true);
   newPlaceCard.querySelector(".item__place").src = url;
   newPlaceCard.querySelector(".item__place-info-name").textContent = title;
@@ -76,7 +75,7 @@ function newPlace(title, url) {
 }
 
 initialPlacesInfo.forEach((place) => {
-  const newItemPlace = newPlace(place.title, place.url);
+  const newItemPlace = cretateCard(place.title, place.url);
   placesContainer.prepend(newItemPlace);
 });
 
@@ -84,7 +83,7 @@ function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
   const title = document.querySelector("#title").value;
   const url = document.querySelector("#image").value;
-  const newItem = newPlace(title, url);
+  const newItem = cretateCard(title, url);
   placesContainer.prepend(newItem);
   popupPlaceForm.classList.remove("popup_opened");
   evt.target.reset();
