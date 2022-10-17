@@ -65,6 +65,11 @@ function createCard(title, url) {
     .addEventListener("click", function (evt) {
       evt.target.closest(".item").remove();
     });
+  newPlaceCard
+    .querySelector(".item__place")
+    .addEventListener("click", function (evt) {
+      handleBigImageAppear(evt);
+    });
 
   return newPlaceCard;
 }
@@ -87,15 +92,16 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closePopup(popup));
 });
 
-function handleOpenPopupClick(evt) {
-  if (evt.target.classList.contains("profile__info-edit-button")) {
-    openPopup(popupProfileForm);
-  } else if (evt.target.classList.contains("profile__add-button")) {
-    openPopup(popupPlaceForm);
-  } else if (evt.target.tagName === "IMG") {
-    handleBigImageAppear(evt);
-  }
+function openImagePopup() {
+  openPopup(popupImage);
 }
+function openPlacePopup() {
+  openPopup(popupPlaceForm);
+}
+function openProfilePopup() {
+  openPopup(popupProfileForm);
+}
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
@@ -104,23 +110,25 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-function handleBigImageAppear(event) {
-  event.target.title = imageDescription.textContent;
-  image.src = event.target.src;
-  const imageLegend = event.target.parentElement.getAttribute("description");
+function handleBigImageAppear(evt) {
+  openImagePopup();
+  evt.target.title = imageDescription.textContent;
+  const imageLegend = evt.target.closest(".item").getAttribute("description");
+  image.src = evt.target.src;
+  image.alt = imageLegend;
   imageDescription.textContent = imageLegend;
-  openPopup(popupImage);
+  console.log(evt.target);
 }
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
   closePopup(popupProfileForm);
 }
 
-profileEditButton.addEventListener("click", handleOpenPopupClick);
-addNewPlaceButton.addEventListener("click", handleOpenPopupClick);
-document.addEventListener("click", handleOpenPopupClick);
+profileEditButton.addEventListener("click", openProfilePopup);
+addNewPlaceButton.addEventListener("click", openPlacePopup);
 newProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
