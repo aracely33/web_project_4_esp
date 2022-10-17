@@ -117,12 +117,10 @@ function handleBigImageAppear(evt) {
   image.src = evt.target.src;
   image.alt = imageLegend;
   imageDescription.textContent = imageLegend;
-  console.log(evt.target);
 }
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
   closePopup(popupProfileForm);

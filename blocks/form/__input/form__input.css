@@ -1,5 +1,5 @@
 .form__input {
-  width: 83.25%;
+  width: 100%;
   padding: 0 0 13.26px 0;
   font-family: "Inter";
   font-style: normal;
@@ -10,6 +10,7 @@
   border-left: 0;
   border-right: 0;
   color: #000000;
+  outline-color: rgb(79, 113, 177);
 }
 
 @media screen and (max-width: 321px) {
