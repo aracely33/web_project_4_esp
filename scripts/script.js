@@ -1,3 +1,5 @@
+const popupList = document.querySelectorAll(".popup");
+console.log(popupList);
 const closeButtons = document.querySelectorAll(".close-button");
 const popupProfileForm = document.querySelector(".popup_type-form-new-profile");
 const profileEditButton = document.querySelector(".profile__info-edit-button");
@@ -126,6 +128,19 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfileForm);
 }
 
+function handleKeyPress(evt) {
+  popupList.forEach((element) => {
+    const open = element.classList.contains("popup_opened");
+    console.log(element);
+    console.log(open);
+    console.log(evt.key);
+    if (open && (evt.key = "Esc")) {
+      closePopup(element);
+    }
+  });
+}
+
+document.addEventListener("keydown", handleKeyPress);
 profileEditButton.addEventListener("click", openProfilePopup);
 addNewPlaceButton.addEventListener("click", openPlacePopup);
 newProfileForm.addEventListener("submit", handleProfileFormSubmit);
