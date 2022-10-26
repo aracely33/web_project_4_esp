@@ -1,5 +1,4 @@
 const popupList = document.querySelectorAll(".popup");
-console.log(popupList);
 const closeButtons = document.querySelectorAll(".close-button");
 const popupProfileForm = document.querySelector(".popup_type-form-new-profile");
 const profileEditButton = document.querySelector(".profile__info-edit-button");
@@ -131,15 +130,25 @@ function handleProfileFormSubmit(evt) {
 function handleKeyPress(evt) {
   popupList.forEach((element) => {
     const open = element.classList.contains("popup_opened");
-    console.log(element);
-    console.log(open);
-    console.log(evt.key);
-    if (open && (evt.key = "Esc")) {
+    const condition = evt.currenTarget;
+
+    if (open && evt.key === "Esc") {
       closePopup(element);
     }
   });
 }
 
+function handleTap(evt) {
+  popupList.forEach((element) => {
+    const open = element.classList.contains("popup_opened");
+    const tap = evt.target.classList.contains("popup");
+    if (open && tap) {
+      closePopup(element);
+    }
+  });
+}
+
+document.addEventListener("click", handleTap);
 document.addEventListener("keydown", handleKeyPress);
 profileEditButton.addEventListener("click", openProfilePopup);
 addNewPlaceButton.addEventListener("click", openPlacePopup);
