@@ -53,29 +53,41 @@
 
     <div class="popup popup_type-form-new-profile">
       <div class="popup__container popup__container_function-form">
-        <form class="form">
-          <fieldset class="form__fields">
+        <form class="form" novalidate>
+          <fieldset class="form__fields form__set">
             <h2 class="form__heading">Editar perfil</h2>
-            <input
-              type="text"
-              id="nombre"
-              class="form__input form__input_info-name"
-              placeholder="Nombre"
-              name="nombre"
-              value="Jaques Costeau"
-            />
-            <input
-              type="text"
-              id="ocupación"
-              class="form__input form__input_info-occupation"
-              placeholder="Acerca de mi"
-              name="ocupación"
-              value="Explorer"
-            />
-          </fieldset>
+            <div class="form__field">
+              <input
+                type="text"
+                class="form__input form__input_info-name"
+                placeholder="Nombre"
+                name="nombre"
+                value="Jaques Costeau"
+                id="nombre"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span class="form__input-error nombre-error"></span>
+            </div>
+            <div class="form__field">
+              <input
+                type="text"
+                class="form__input form__input_info-occupation"
+                placeholder="Acerca de mi"
+                name="ocupación"
+                value="Explorer"
+                id="ocupación"
+                required
+                minlength="2"
+                maxlength="200"
+              />
+              <span class="form__input-error ocupación-error"></span>
+            </div>
 
-          <fieldset class="form__fields">
-            <button class="form__Button pointer" type="submit">Guardar</button>
+            <button class="form__Button form__submit pointer" type="submit">
+              Guardar
+            </button>
           </fieldset>
         </form>
         <button class="close-button pointer" type="button"></button>
@@ -84,34 +96,44 @@
 
     <div class="popup popup_type-form-new-place">
       <div class="popup__container popup__container_function-form">
-        <form class="form form_newplace">
-          <fieldset class="form__fields">
+        <form class="form form_newplace" novalidate>
+          <fieldset class="form__fields form__set">
             <h2 class="form__heading">Nuevo lugar</h2>
-            <input
-              type="text"
-              id="title"
-              class="form__input form__input_newplace-title"
-              placeholder="Título"
-              name="title"
-              value=""
-            />
-            <input
-              type="text"
-              id="image"
-              class="form__input form__input_newplace-url"
-              placeholder="Enlace a la imagen"
-              name="image"
-              value=""
-            />
-          </fieldset>
-
-          <fieldset class="form__fields">
-            <button class="form__Button pointer" type="submit">Crear</button>
+            <div class="form__field">
+              <input
+                type="text"
+                id="title"
+                class="form__input form__input_newplace-title"
+                placeholder="Título"
+                name="title"
+                value=""
+                required
+                minlength="2"
+                maxlength="30"
+              />
+              <span class="form__input-error title-error"></span>
+            </div>
+            <div class="form__field">
+              <input
+                id="image"
+                class="form__input form__input_newplace-url"
+                placeholder="Enlace a la imagen"
+                name="image"
+                type="url"
+                value=""
+                required
+              />
+              <span class="form__input-error image-error"></span>
+            </div>
+            <button class="form__Button form__submit pointer" type="submit">
+              Crear
+            </button>
           </fieldset>
         </form>
         <button class="close-button pointer" type="button"></button>
       </div>
     </div>
+
     <div class="popup popup_type-image">
       <div class="popup__container popup__container_function-image">
         <button type="button" class="close-button pointer"></button>
@@ -144,5 +166,6 @@
       </div>
     </template>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
