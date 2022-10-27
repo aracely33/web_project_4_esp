@@ -53,13 +53,13 @@
 
     <div class="popup popup_type-form-new-profile">
       <div class="popup__container popup__container_function-form">
-        <form class="form" novalidate>
+        <form class="form popup__form" novalidate>
           <fieldset class="form__fields form__set">
             <h2 class="form__heading">Editar perfil</h2>
             <div class="form__field">
               <input
                 type="text"
-                class="form__input form__input_info-name"
+                class="form__input form__input_info-name popup__input"
                 placeholder="Nombre"
                 name="nombre"
                 value="Jaques Costeau"
@@ -73,7 +73,7 @@
             <div class="form__field">
               <input
                 type="text"
-                class="form__input form__input_info-occupation"
+                class="form__input form__input_info-occupation popup__input"
                 placeholder="Acerca de mi"
                 name="ocupación"
                 value="Explorer"
@@ -85,7 +85,10 @@
               <span class="form__input-error ocupación-error"></span>
             </div>
 
-            <button class="form__Button form__submit pointer" type="submit">
+            <button
+              class="form__Button form__submit popup__button pointer"
+              type="submit"
+            >
               Guardar
             </button>
           </fieldset>
@@ -96,14 +99,14 @@
 
     <div class="popup popup_type-form-new-place">
       <div class="popup__container popup__container_function-form">
-        <form class="form form_newplace" novalidate>
+        <form class="form form_newplace popup__form" novalidate>
           <fieldset class="form__fields form__set">
             <h2 class="form__heading">Nuevo lugar</h2>
             <div class="form__field">
               <input
                 type="text"
                 id="title"
-                class="form__input form__input_newplace-title"
+                class="form__input form__input_newplace-title popup__input"
                 placeholder="Título"
                 name="title"
                 value=""
@@ -116,7 +119,7 @@
             <div class="form__field">
               <input
                 id="image"
-                class="form__input form__input_newplace-url"
+                class="form__input form__input_newplace-url popup__input"
                 placeholder="Enlace a la imagen"
                 name="image"
                 type="url"
@@ -125,7 +128,10 @@
               />
               <span class="form__input-error image-error"></span>
             </div>
-            <button class="form__Button form__submit pointer" type="submit">
+            <button
+              class="form__Button form__submit popup__button pointer"
+              type="submit"
+            >
               Crear
             </button>
           </fieldset>
