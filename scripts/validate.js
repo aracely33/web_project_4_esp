@@ -1,19 +1,17 @@
-/*const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, popupForm) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("form__input_type_error");
-
+  inputElement.classList.add(popupForm.inputErrorClass);
   errorElement.textContent = errorMessage;
-  console.log(errorElement.textContent);
-  errorElement.classList.add("form__input-error_active");
+  errorElement.classList.add(popupForm.errorClass);
 };
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, popupForm) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("form__input_type_error");
-  errorElement.classList.remove("form__input-error_active");
+  inputElement.classList.remove(popupForm.inputErrorClass);
+  errorElement.classList.remove(popupForm.errorClass);
   errorElement.textContent = "";
 };
-*/
+
 const setEventListeners = (formElement, popupForm) => {
   this.formElement = formElement;
   this.popupForm = popupForm;
@@ -32,8 +30,7 @@ const setEventListeners = (formElement, popupForm) => {
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement);
-      /*checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);*/
+      toggleButtonState(inputList, buttonElement, popupForm);
     });
   });
 };
@@ -56,11 +53,14 @@ const enableValidation = (popupForm) => {
 
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    console.log("debería aparecer un mensaje rojo molesto");
-    // showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      popupForm
+    );
   } else {
-    console.log("todo marcha bien");
-    //hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, popupForm);
   }
 };
 
