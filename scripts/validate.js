@@ -27,18 +27,15 @@ const setEventListeners = (formElement, popupForm) => {
   );
 
   //const buttonElement = formElement.querySelector(".form__submit");
-  toggleButtonState(inputList, buttonElement);
-  /*
-  
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, popupForm);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement);
-
-      toggleButtonState(inputList, buttonElement);
+      /*checkInputValidity(formElement, inputElement);
+      toggleButtonState(inputList, buttonElement);*/
     });
-  });*/
+  });
 };
 
 const enableValidation = (popupForm) => {
@@ -56,12 +53,14 @@ const enableValidation = (popupForm) => {
     });
   });
 };
-/*
+
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    console.log("debería aparecer un mensaje rojo molesto");
+    // showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement);
+    console.log("todo marcha bien");
+    //hideInputError(formElement, inputElement);
   }
 };
 
@@ -71,13 +70,15 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, popupForm) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("form__Button_inactive");
+    buttonElement.classList.add(popupForm.inactiveButtonClass);
+    //buttonElement.classList.add("form__Button_inactive");esto iba antes
   } else {
-    buttonElement.classList.remove("form__Button_inactive");
+    buttonElement.classList.remove(popupForm.inactiveButtonClass);
+    //buttonElement.classList.remove("form__Button_inactive");esto iba antes
   }
-};*/
+};
 
 enableValidation({
   formSelector: ".popup__form",
