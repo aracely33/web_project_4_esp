@@ -130,9 +130,7 @@ function handleProfileFormSubmit(evt) {
 function handleKeyPress(evt) {
   popupList.forEach((element) => {
     const open = element.classList.contains("popup_opened");
-    const condition = evt.currenTarget;
-
-    if (open && evt.key === "Esc") {
+    if (open && evt.key === "Escape") {
       closePopup(element);
     }
   });
@@ -142,6 +140,7 @@ function handleTap(evt) {
   popupList.forEach((element) => {
     const open = element.classList.contains("popup_opened");
     const tap = evt.target.classList.contains("popup");
+
     if (open && tap) {
       closePopup(element);
     }
