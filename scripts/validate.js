@@ -24,7 +24,6 @@ const setEventListeners = (formElement, popupForm) => {
     popupForm.submitButtonSelector
   );
 
-  //const buttonElement = formElement.querySelector(".form__submit");
   toggleButtonState(inputList, buttonElement, popupForm);
 
   inputList.forEach((inputElement) => {
@@ -73,10 +72,8 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement, popupForm) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(popupForm.inactiveButtonClass);
-    //buttonElement.classList.add("form__Button_inactive");esto iba antes
   } else {
     buttonElement.classList.remove(popupForm.inactiveButtonClass);
-    //buttonElement.classList.remove("form__Button_inactive");esto iba antes
   }
 };
 
