@@ -13,6 +13,10 @@ Se agregaron al proyecto nuevas funcionalidades:
   -Diviértete borrando los lugares que no te gusten utilizando el botón "Trash" en la esquina superior derecha del lugar o bien dale like a aquellos sitios que fueron de tu agrado.
   -Por último, si quieres ver en grande ese lugar que posiblemente visites las siguientes vacaciones, da click en la imagen y cierra con el botón una vez hayas decidido comprar los boletos.
 
+  Ahora es posible validar los datos que el usuario ingresa.Mediante el uso del los mensajes de validación del navegador y JavaScript, se puede ver si los nombres del prefil o del lugar son demasiado cortos o muy largos, o si la url introducida no es una url.
+
+  También es posible salr del formulario emergente o de la imagen en rande haciendo click en en "escape" o haciendo un "tap" en la superposición.
+
 Una vez refrescada la página, ningún cambio es guardado.Para completar esta parte se pretende agregar más tarde la parte de la conexión con el servidor.
 
 ### Tecnologías y técnicas
@@ -39,7 +43,6 @@ El usuario puede introducir un texto demasiado largo al editar los datos del per
 text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
-}
 
 **JavaScript**
 
@@ -52,6 +55,14 @@ overflow: hidden;
 - El objeto evt y target.
 - Iteración de objetos con forEach
 - Creación de atributos
+- La función enableValidation() permite activar la validación. Toma
+  como argumento un objeto que contiene clases y selectores, los cuales se
+  utilizan luego en sus funciones anidadas.
+- Cuando se abre la ventana emergente, se añade un detector de eventos que
+  permite cerrarla pulsando Esc ; cuando la ventana se cierra, este detector se
+  elimina.
+  -toggleButtonState() controla el estado del botón submit.
+
 - **GitHub pages**
 
-- [Enlace a la página](https://aracely33.github.io/web_project_4_esp/)
+- [Enlace a la página](https://aracely33.gi8thub.io/web_project_4_esp/)
