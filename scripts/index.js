@@ -105,10 +105,14 @@ function openProfilePopup() {
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", handleKeyPress);
+  document.addEventListener("click", handleTap);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleKeyPress);
+  document.removeEventListener("click", handleTap);
 }
 
 function handleBigImageAppear(evt) {
@@ -129,8 +133,7 @@ function handleProfileFormSubmit(evt) {
 
 function handleKeyPress(evt) {
   popupList.forEach((element) => {
-    const open = element.classList.contains("popup_opened");
-    if (open && evt.key === "Escape") {
+    if (evt.key === "Escape") {
       closePopup(element);
     }
   });
@@ -138,17 +141,13 @@ function handleKeyPress(evt) {
 
 function handleTap(evt) {
   popupList.forEach((element) => {
-    const open = element.classList.contains("popup_opened");
     const tap = evt.target.classList.contains("popup");
-
-    if (open && tap) {
+    if (tap) {
       closePopup(element);
     }
   });
 }
 
-document.addEventListener("click", handleTap);
-document.addEventListener("keydown", handleKeyPress);
 profileEditButton.addEventListener("click", openProfilePopup);
 addNewPlaceButton.addEventListener("click", openPlacePopup);
 newProfileForm.addEventListener("submit", handleProfileFormSubmit);
