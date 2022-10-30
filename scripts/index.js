@@ -85,6 +85,7 @@ function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
   const newItem = createCard(titleImage.value, urlImage.value);
   placesContainer.prepend(newItem);
+  evt.target.reset();
   closePopup(popupPlaceForm);
 }
 
@@ -128,6 +129,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileOccupation.textContent = jobInput.value;
+  evt.target.reset();
   closePopup(popupProfileForm);
 }
 
