@@ -1,58 +1,56 @@
-const showInputError = (formElement, inputElement, errorMessage, popupForm) => {
+const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(popupForm.inputErrorClass);
+  inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(popupForm.errorClass);
+  errorElement.classList.add(settings.errorClass);
 };
 
-const hideInputError = (formElement, inputElement, popupForm) => {
+const hideInputError = (formElement, inputElement, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(popupForm.inputErrorClass);
-  errorElement.classList.remove(popupForm.errorClass);
+  inputElement.classList.remove(settings.inputErrorClass);
+  errorElement.classList.remove(settings.errorClass);
   errorElement.textContent = "";
 };
 
-const setEventListeners = (formElement, popupForm) => {
+const setEventListeners = (formElement, settings) => {
   this.formElement = formElement;
-  this.popupForm = popupForm;
+  this.settings = settings;
 
   const inputList = Array.from(
-    formElement.querySelectorAll(popupForm.inputSelector)
+    formElement.querySelectorAll(settings.inputSelector)
   );
 
   const buttonElement = formElement.querySelector(
-    popupForm.submitButtonSelector
+    settings.submitButtonSelector
   );
 
-  toggleButtonState(inputList, buttonElement, popupForm);
+  toggleButtonState(inputList, buttonElement, settings);
 
   formElement.addEventListener("reset", () => {
     // 'setTimeout' es necesario para esperar a que se borre el formulario (la llamada desaparecerá al final de la pila) y solo entonces llamar a `toggleButtonState`
     setTimeout(() => {
-      toggleButtonState(inputList, buttonElement, popupForm);
+      toggleButtonState(inputList, buttonElement, settings);
     }, 0); // basta con especificar 0 milisegundos para que después de `reset` se active la acción
   });
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement, popupForm);
+      toggleButtonState(inputList, buttonElement, settings);
     });
   });
 };
 
-const enableValidation = (popupForm) => {
-  this.popupForm = popupForm;
-  const formList = Array.from(
-    document.querySelectorAll(popupForm.formSelector)
-  );
+const enableValidation = (settings) => {
+  this.settings = settings;
+  const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
     const fieldsetList = Array.from(formElement.querySelectorAll(".form__set"));
     fieldsetList.forEach((fieldset) => {
-      setEventListeners(fieldset, popupForm);
+      setEventListeners(fieldset, settings);
     });
   });
 };
@@ -63,10 +61,10 @@ const checkInputValidity = (formElement, inputElement) => {
       formElement,
       inputElement,
       inputElement.validationMessage,
-      popupForm
+      settings
     );
   } else {
-    hideInputError(formElement, inputElement, popupForm);
+    hideInputError(formElement, inputElement, settings);
   }
 };
 
@@ -76,12 +74,12 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement, popupForm) => {
+const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(popupForm.inactiveButtonClass);
+    buttonElement.classList.add(settings.inactiveButtonClass);
     buttonElement.setAttribute("disabled", true);
   } else {
-    buttonElement.classList.remove(popupForm.inactiveButtonClass);
+    buttonElement.classList.remove(settings.inactiveButtonClass);
     buttonElement.removeAttribute("disabled");
   }
 };
