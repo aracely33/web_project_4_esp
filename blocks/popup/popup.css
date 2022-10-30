@@ -10,9 +10,9 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  -webkit-transition: opacity 2s ease-out;
-  -o-transition: opacity 2s ease-out;
-  transition: opacity 2s ease-out;
+  -webkit-transition: opacity 1s ease-out;
+  -o-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
   height: 0;
   overflow: hidden;
   -webkit-box-pack: center;

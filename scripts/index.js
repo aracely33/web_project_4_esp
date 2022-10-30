@@ -132,20 +132,16 @@ function handleProfileFormSubmit(evt) {
 }
 
 function handleKeyPress(evt) {
-  popupList.forEach((element) => {
-    if (evt.key === "Escape") {
-      closePopup(element);
-    }
-  });
+  if (evt.key === "Escape") {
+    popupList.forEach(closePopup);
+  }
 }
 
 function handleTap(evt) {
-  popupList.forEach((element) => {
-    const tap = evt.target.classList.contains("popup");
-    if (tap) {
-      closePopup(element);
-    }
-  });
+  const tap = evt.target.classList.contains("popup");
+  if (tap) {
+    popupList.forEach(closePopup);
+  }
 }
 
 profileEditButton.addEventListener("click", openProfilePopup);
