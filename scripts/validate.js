@@ -26,6 +26,13 @@ const setEventListeners = (formElement, popupForm) => {
 
   toggleButtonState(inputList, buttonElement, popupForm);
 
+  formElement.addEventListener("reset", () => {
+    // 'setTimeout' es necesario para esperar a que se borre el formulario (la llamada desaparecerá al final de la pila) y solo entonces llamar a `toggleButtonState`
+    setTimeout(() => {
+      toggleButtonState(inputList, buttonElement, popupForm);
+    }, 0); // basta con especificar 0 milisegundos para que después de `reset` se active la acción
+  });
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement);
@@ -72,8 +79,10 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement, popupForm) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(popupForm.inactiveButtonClass);
+    buttonElement.setAttribute("disabled", true);
   } else {
     buttonElement.classList.remove(popupForm.inactiveButtonClass);
+    buttonElement.removeAttribute("disabled");
   }
 };
 

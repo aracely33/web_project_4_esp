@@ -86,7 +86,6 @@ function handleNewPlaceFormSubmit(evt) {
   const newItem = createCard(titleImage.value, urlImage.value);
   placesContainer.prepend(newItem);
   closePopup(popupPlaceForm);
-  evt.target.reset();
 }
 
 closeButtons.forEach((button) => {
