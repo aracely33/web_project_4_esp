@@ -8,12 +8,12 @@ const addNewPlaceButton = document.querySelector(".profile__add-button");
 const popupImage = document.querySelector(".popup_type-image");
 const imageDescription = document.querySelector(".popup__imagedescription");
 const image = document.querySelector(".popup__image");
-const newProfileForm = document.querySelector(".form");
-const nameInput = document.querySelector(".form__input_info-name");
-const jobInput = document.querySelector(".form__input_info-occupation");
+const newProfileForm = document.forms.form;
+const nameInput = document.forms.form.nombre;
+const jobInput = document.forms.form.ocupación;
 const profileName = document.querySelector(".profile__info-name");
 const profileOccupation = document.querySelector(".profile__info-occupation");
-const newPlaceForm = document.querySelector(".form_newplace");
+const newPlaceForm = document.forms.formPlace;
 const placesContainer = document.querySelector(".gallery");
 const templatePlace = document
   .querySelector(".template__place")
