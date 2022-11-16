@@ -14,8 +14,8 @@ const jobInput = document.forms.form.ocupación;
 const profileName = document.querySelector(".profile__info-name");
 const profileOccupation = document.querySelector(".profile__info-occupation");
 const newPlaceForm = document.forms.formPlace;
-const placesContainer = document.querySelector(".gallery");
-const templatePlace = document
+
+/*const templatePlace = document
   .querySelector(".template__place")
   .content.querySelector(".item");
 
@@ -79,7 +79,7 @@ function createCard(title, url) {
 initialPlacesInfo.forEach((place) => {
   const newItemPlace = createCard(place.title, place.url);
   placesContainer.prepend(newItemPlace);
-});
+});*/
 
 function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
