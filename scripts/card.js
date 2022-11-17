@@ -16,8 +16,10 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._element.querySelector(".item__place").src = this._image;
+
     this._element.querySelector(".item__place-info-name").textContent =
       this._title;
+    this._element.querySelector(".item__place").alt = this._title;
     this._element
       .querySelector(".item__place-like-button")
       .addEventListener("click", function (evt) {
@@ -28,6 +30,7 @@ export class Card {
       .addEventListener("click", function (evt) {
         evt.target.closest(".item").remove();
       });
+
     return this._element;
   }
 }
