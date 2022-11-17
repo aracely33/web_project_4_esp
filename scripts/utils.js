@@ -1,5 +1,4 @@
 const popupList = document.querySelectorAll(".popup"); //utils.js
-const popupOpened = document.querySelector(".popup_opened"); //utils.js
 export const closeButtons = document.querySelectorAll(".close-button"); //utils.js
 export const popupProfileForm = document.querySelector(
   ".popup_type-form-new-profile"
@@ -13,10 +12,9 @@ const popupImage = document.querySelector(".popup_type-image"); //utils.js
 const imageDescription = document.querySelector(".popup__imagedescription"); //utils.js
 const image = document.querySelector(".popup__image"); //utils.js
 
-/*
 function openImagePopup() {
   openPopup(popupImage);
-}*/
+}
 
 export function openPlacePopup() {
   openPopup(popupPlaceForm);
@@ -37,15 +35,12 @@ export function closePopup(popup) {
   document.removeEventListener("click", handleTap);
 }
 
-/*
-function handleBigImageAppear(evt) {
+export function handleBigImageAppear(evt) {
   openImagePopup();
-  evt.target.title = imageDescription.textContent;
-  const imageLegend = evt.target.closest(".item").getAttribute("description");
+  const imageLegend = evt.target.alt;
   image.src = evt.target.src;
-  image.alt = imageLegend;
   imageDescription.textContent = imageLegend;
-}*/
+}
 
 /* ESTO ES PARA LA VALIDACIÓN
 function handleProfileFormSubmit(evt) {

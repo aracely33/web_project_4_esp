@@ -78,7 +78,7 @@ function createCard(title, url) {
     .addEventListener("click", function (evt) {
       handleBigImageAppear(evt);
     });
-
+    
   return newPlaceCard;
 }
 

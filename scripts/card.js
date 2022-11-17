@@ -20,6 +20,13 @@ export class Card {
     this._element.querySelector(".item__place-info-name").textContent =
       this._title;
     this._element.querySelector(".item__place").alt = this._title;
+    //this._element.querySelector(".item__place").title = this._title;
+    this._element
+      .querySelector(".item__place")
+      .addEventListener("click", function (evt) {
+        handleBigImageAppear(evt);
+      });
+
     this._element
       .querySelector(".item__place-like-button")
       .addEventListener("click", function (evt) {
@@ -34,3 +41,5 @@ export class Card {
     return this._element;
   }
 }
+
+import { handleBigImageAppear } from "./utils.js";
