@@ -1,16 +1,16 @@
-const popupList = document.querySelectorAll(".popup"); //utils.js
-export const closeButtons = document.querySelectorAll(".close-button"); //utils.js
+const popupList = document.querySelectorAll(".popup");
+export const closeButtons = document.querySelectorAll(".close-button");
 export const popupProfileForm = document.querySelector(
   ".popup_type-form-new-profile"
-); //utils.js
+);
 export const profileEditButton = document.querySelector(
   ".profile__info-edit-button"
-); //utils.js
+);
 const popupPlaceForm = document.querySelector(".popup_type-form-new-place");
-export const addNewPlaceButton = document.querySelector(".profile__add-button"); //utils.js
-const popupImage = document.querySelector(".popup_type-image"); //utils.js
-const imageDescription = document.querySelector(".popup__imagedescription"); //utils.js
-const image = document.querySelector(".popup__image"); //utils.js
+export const addNewPlaceButton = document.querySelector(".profile__add-button");
+const popupImage = document.querySelector(".popup_type-image");
+const imageDescription = document.querySelector(".popup__imagedescription");
+const image = document.querySelector(".popup__image");
 
 function openImagePopup() {
   openPopup(popupImage);

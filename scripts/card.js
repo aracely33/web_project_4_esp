@@ -1,4 +1,4 @@
-export class Card {
+export default class Card {
   constructor(data, selector) {
     this._title = data.title;
     this._image = data.url;
@@ -9,7 +9,6 @@ export class Card {
     const cardElement = document
       .querySelector(this._selector)
       .content.cloneNode(true);
-
     return cardElement;
   }
 

@@ -1,5 +1,4 @@
-export const forms = document.querySelectorAll(".form");
-export class FormValidator {
+export default class FormValidator {
   //Tu constructor tiene dos parámetros.
   //El primer parámetro es un objeto de configuración "config" que almacena los selectores y las clases del formulario,
   //el segundo toma un elemento del formulario a validar.
@@ -10,17 +9,13 @@ export class FormValidator {
   }
   //Tiene un método público enableValidation(), que activa la validación del formulario.
   enableValidation() {
-    //PARA EL SUBMIT DE CADA FORMUALARIO
     this._formElement.addEventListener("submit", (evt) => {
-      console.log("hola voy a hacer submit");
       evt.preventDefault();
     });
 
     this._setEventListeners(this._formElement, this._config);
   }
-
   //Tiene métodos privados para:
-
   //agregar todos los controladores necesarios.**********
 
   _setEventListeners(formElement, settings) {

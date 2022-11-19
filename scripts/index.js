@@ -1,10 +1,9 @@
+const forms = document.querySelectorAll(".form");
 const newProfileForm = document.forms.form;
 const newPlaceForm = document.forms.formPlace;
+const profileName = document.querySelector(".profile__info-name");
+const profileOccupation = document.querySelector(".profile__info-occupation");
 const placesContainer = document.querySelector(".gallery");
-/*const data = {
-  title:
-
-};*/
 
 const initialPlacesInfo = [
   {
@@ -37,7 +36,6 @@ initialPlacesInfo.forEach((item) => {
   const card = new Card(item, ".template__place");
   const cardElement = card.generateCard();
 
-  // Añadir al DOM
   document.querySelector(".gallery").append(cardElement);
 });
 
@@ -47,29 +45,28 @@ closeButtons.forEach((button) => {
 });
 
 export function handleNewPlaceFormSubmit(evt) {
-  //  ESTO ES para el evento SUBMIT UNA VEZ VALIDADO**
   evt.preventDefault();
-  console.log("holi SOY UN NUEVO LUGAR");
-  console.log(evt.target.elements);
-  /*const newItem = new Card(data, "template__place");
-  placesContainer.prepend(newItem);
+  const data = {
+    title: `${evt.target.elements.title.value}`,
+    url: `${evt.target.elements.image.value}`,
+  };
+  const newCard = new Card(data, ".template__place");
+  const newPlace = newCard.generateCard();
+  placesContainer.prepend(newPlace);
   evt.target.reset();
-  closePopup(popupPlaceForm);*/
+  closePopup(evt.target.closest(".popup"));
 }
 
-//  ESTO ES para el evento SUBMIT UNA VEZ VALIDADO**
 export function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  console.log("holi VOY A SER UN NUEVO PERFIL");
-  /*profileName.textContent = nameInput.value;
-  profileOccupation.textContent = jobInput.value;
+  profileName.textContent = evt.target.elements.nombre.value;
+  profileOccupation.textContent = evt.target.elements.ocupación.value;
   evt.target.reset();
-  closePopup(popupProfileForm);*/
+  closePopup(evt.target.closest(".popup"));
 }
 
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
 forms.forEach((form) => {
-  console.log(form.name);
   const validate = new FormValidator(
     {
       formSelector: ".popup__form",
@@ -90,7 +87,7 @@ addNewPlaceButton.addEventListener("click", openPlacePopup);
 newProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
 
-import { Card } from "./card.js";
+import Card from "./card.js";
 import {
   profileEditButton,
   openProfilePopup,
@@ -100,4 +97,4 @@ import {
   closePopup,
 } from "./utils.js";
 
-import { forms, FormValidator } from "./FormValidator.js";
+import FormValidator from "./FormValidator.js";
