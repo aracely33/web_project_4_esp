@@ -1,9 +1,5 @@
 const newProfileForm = document.forms.form;
 const newPlaceForm = document.forms.formPlace;
-/*const nameInput = document.forms.form.nombre;
-const jobInput = document.forms.form.ocupación;
-const profileName = document.querySelector(".profile__info-name");
-const profileOccupation = document.querySelector(".profile__info-occupation");*/
 const placesContainer = document.querySelector(".gallery");
 
 const initialPlacesInfo = [
@@ -50,10 +46,10 @@ export function handleNewPlaceFormSubmit(evt) {
   //  ESTO ES para el evento SUBMIT UNA VEZ VALIDADO**
   evt.preventDefault();
   console.log("holi SOY UN NUEVO LUGAR");
-  /*const newItem = new Card(data, "template__place");
+  const newItem = new Card(data, "template__place");
   placesContainer.prepend(newItem);
   evt.target.reset();
-  closePopup(popupPlaceForm);*/
+  closePopup(popupPlaceForm);
 }
 
 //  ESTO ES para el evento SUBMIT UNA VEZ VALIDADO**
@@ -65,6 +61,22 @@ export function handleProfileFormSubmit(evt) {
   evt.target.reset();
   closePopup(popupProfileForm);*/
 }
+
+//Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
+forms.forEach((form) => {
+  const validate = new FormValidator(
+    {
+      formSelector: ".popup__form",
+      inputSelector: ".popup__input",
+      submitButtonSelector: ".popup__button",
+      inactiveButtonClass: "popup__button_disabled",
+      inputErrorClass: "popup__input_type_error",
+      errorClass: "popup__error_visible",
+    },
+    form
+  );
+  validate.enableValidation();
+});
 
 profileEditButton.addEventListener("click", openProfilePopup);
 addNewPlaceButton.addEventListener("click", openPlacePopup);
@@ -81,9 +93,5 @@ import {
   closeButtons,
   closePopup,
 } from "./utils.js";
-/*
-import {
-  handleNewPlaceFormSubmit,
-  handleProfileFormSubmit,
-} from "./FormValidator.js";
-*/
+
+import { forms, FormValidator } from "./FormValidator.js";
