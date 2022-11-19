@@ -1,6 +1,10 @@
 const newProfileForm = document.forms.form;
 const newPlaceForm = document.forms.formPlace;
 const placesContainer = document.querySelector(".gallery");
+/*const data = {
+  title:
+
+};*/
 
 const initialPlacesInfo = [
   {
@@ -46,10 +50,11 @@ export function handleNewPlaceFormSubmit(evt) {
   //  ESTO ES para el evento SUBMIT UNA VEZ VALIDADO**
   evt.preventDefault();
   console.log("holi SOY UN NUEVO LUGAR");
-  const newItem = new Card(data, "template__place");
+  console.log(evt.target.elements);
+  /*const newItem = new Card(data, "template__place");
   placesContainer.prepend(newItem);
   evt.target.reset();
-  closePopup(popupPlaceForm);
+  closePopup(popupPlaceForm);*/
 }
 
 //  ESTO ES para el evento SUBMIT UNA VEZ VALIDADO**
@@ -64,6 +69,7 @@ export function handleProfileFormSubmit(evt) {
 
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
 forms.forEach((form) => {
+  console.log(form.name);
   const validate = new FormValidator(
     {
       formSelector: ".popup__form",
