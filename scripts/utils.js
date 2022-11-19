@@ -42,15 +42,6 @@ export function handleBigImageAppear(evt) {
   imageDescription.textContent = imageLegend;
 }
 
-/* ESTO ES PARA LA VALIDACIÓN
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileOccupation.textContent = jobInput.value;
-  evt.target.reset();
-  closePopup(popupProfileForm);
-}*/
-
 function handleKeyPress(evt) {
   if (evt.key === "Escape") {
     popupList.forEach(closePopup);

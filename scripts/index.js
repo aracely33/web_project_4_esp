@@ -1,19 +1,9 @@
-/*const popupList = document.querySelectorAll(".popup"); //utils.js
-const popupOpened = document.querySelector(".popup_opened"); //utils.js
-const closeButtons = document.querySelectorAll(".close-button"); //utils.js
-const popupProfileForm = document.querySelector(".popup_type-form-new-profile"); //utils.js
-const profileEditButton = document.querySelector(".profile__info-edit-button"); //utils.js
-const popupPlaceForm = document.querySelector(".popup_type-form-new-place");
-const addNewPlaceButton = document.querySelector(".profile__add-button"); //utils.js
-const popupImage = document.querySelector(".popup_type-image"); //utils.js
-const imageDescription = document.querySelector(".popup__imagedescription"); //utils.js
-const image = document.querySelector(".popup__image");*/ //utils.js
 const newProfileForm = document.forms.form;
-const nameInput = document.forms.form.nombre;
+const newPlaceForm = document.forms.formPlace;
+/*const nameInput = document.forms.form.nombre;
 const jobInput = document.forms.form.ocupación;
 const profileName = document.querySelector(".profile__info-name");
-const profileOccupation = document.querySelector(".profile__info-occupation");
-const newPlaceForm = document.forms.formPlace;
+const profileOccupation = document.querySelector(".profile__info-occupation");*/
 const placesContainer = document.querySelector(".gallery");
 
 const initialPlacesInfo = [
@@ -51,59 +41,36 @@ initialPlacesInfo.forEach((item) => {
   document.querySelector(".gallery").append(cardElement);
 });
 
-/*
-const titleImage = document.querySelector("#title");
-const urlImage = document.querySelector("#image");
-
-function createCard(title, url) {
-  const newPlaceCard = templatePlace.cloneNode(true);
-  const cardImage = newPlaceCard.querySelector(".item__place");
-  cardImage.src = url;
-  cardImage.alt = title;ESTO VA SER IMPORTANTE DESPUÉS PARA EL POPUP
-  newPlaceCard.querySelector(".item__place-info-name").textContent = title;
-  newPlaceCard.setAttribute("description", title);
-  newPlaceCard
-    .querySelector(".item__place-like-button")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("item__place-like-button_active");
-    });
-
-  newPlaceCard
-    .querySelector(".item__trash-button")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".item").remove();
-    });
-  newPlaceCard
-    .querySelector(".item__place")
-    .addEventListener("click", function (evt) {
-      handleBigImageAppear(evt);
-    });
-    
-  return newPlaceCard;
-}
-
-initialPlacesInfo.forEach((place) => {
-  const newItemPlace = createCard(place.title, place.url);
-  placesContainer.prepend(newItemPlace);
-});*/
-
-/*function handleNewPlaceFormSubmit(evt) {//  ESTO ES PARA LA VALIDACIÓN
-  evt.preventDefault();
-  const newItem = createCard(titleImage.value, urlImage.value);
-  placesContainer.prepend(newItem);
-  evt.target.reset();
-  closePopup(popupPlaceForm);
-}*/
-
 closeButtons.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
 });
 
+export function handleNewPlaceFormSubmit(evt) {
+  //  ESTO ES para el evento SUBMIT UNA VEZ VALIDADO**
+  evt.preventDefault();
+  console.log("holi SOY UN NUEVO LUGAR");
+  /*const newItem = new Card(data, "template__place");
+  placesContainer.prepend(newItem);
+  evt.target.reset();
+  closePopup(popupPlaceForm);*/
+}
+
+//  ESTO ES para el evento SUBMIT UNA VEZ VALIDADO**
+export function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  console.log("holi VOY A SER UN NUEVO PERFIL");
+  /*profileName.textContent = nameInput.value;
+  profileOccupation.textContent = jobInput.value;
+  evt.target.reset();
+  closePopup(popupProfileForm);*/
+}
+
 profileEditButton.addEventListener("click", openProfilePopup);
 addNewPlaceButton.addEventListener("click", openPlacePopup);
-//newProfileForm.addEventListener("submit", handleProfileFormSubmit);
-//newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
+
+newProfileForm.addEventListener("submit", handleProfileFormSubmit);
+newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
 
 import { Card } from "./card.js";
 import {
@@ -114,3 +81,9 @@ import {
   closeButtons,
   closePopup,
 } from "./utils.js";
+/*
+import {
+  handleNewPlaceFormSubmit,
+  handleProfileFormSubmit,
+} from "./FormValidator.js";
+*/
