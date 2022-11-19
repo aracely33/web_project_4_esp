@@ -5,7 +5,7 @@ export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
-    this._forms = document.querySelectorAll(config.formSelector);
+    //this._forms = document.querySelectorAll(config.formSelector);
   }
   //Tiene un método público enableValidation(), que activa la validación del formulario.
   enableValidation() {
@@ -18,42 +18,42 @@ export default class FormValidator {
   //Tiene métodos privados para:
   //agregar todos los controladores necesarios.**********
 
-  _setEventListeners(formElement, settings) {
+  _setEventListeners(formElement, config) {
     this._formElement = formElement;
-    this._settings = settings;
+    this._config = config;
 
     const inputList = Array.from(
-      this._formElement.querySelectorAll(this._settings.inputSelector)
+      this._formElement.querySelectorAll(this._config.inputSelector)
     );
     const buttonElement = formElement.querySelector(
-      this._settings.submitButtonSelector
+      this._config.submitButtonSelector
     );
 
-    this._toggleButtonState(inputList, buttonElement, this._settings);
+    this._toggleButtonState(inputList, buttonElement, this._config);
 
     this._formElement.addEventListener("reset", () => {
       // 'setTimeout' es necesario para esperar a que se borre el formulario (la llamada desaparecerá al final de la pila) y solo entonces llamar a `toggleButtonState`
       setTimeout(() => {
-        this._toggleButtonState(inputList, buttonElement, this._settings);
+        this._toggleButtonState(inputList, buttonElement, this._config);
       }, 0); // basta con especificar 0 milisegundos para que después de `reset` se active la acción
     });
 
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", (evt) => {
         this._checkInputValidity(this._formElement, inputElement);
-        this._toggleButtonState(inputList, buttonElement, this._settings);
+        this._toggleButtonState(inputList, buttonElement, this._config);
       });
     });
   }
 
   //cambiar el estado del botón Submit***********
 
-  _toggleButtonState(inputList, buttonElement, settings) {
+  _toggleButtonState(inputList, buttonElement, config) {
     if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(settings.inactiveButtonClass);
+      buttonElement.classList.add(config.inactiveButtonClass);
       buttonElement.setAttribute("disabled", true);
     } else {
-      buttonElement.classList.remove(settings.inactiveButtonClass);
+      buttonElement.classList.remove(config.inactiveButtonClass);
       buttonElement.removeAttribute("disabled");
     }
   }
@@ -71,17 +71,17 @@ export default class FormValidator {
     }
   }
 
-  _showInputError(formElement, inputElement, errorMessage, settings) {
+  _showInputError(formElement, inputElement, errorMessage, config) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add(settings.inputErrorClass);
+    inputElement.classList.add(config.inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(settings.errorClass);
+    errorElement.classList.add(config.errorClass);
   }
 
-  _hideInputError(formElement, inputElement, settings) {
+  _hideInputError(formElement, inputElement, config) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove(settings.inputErrorClass);
-    errorElement.classList.remove(settings.errorClass);
+    inputElement.classList.remove(config.inputErrorClass);
+    errorElement.classList.remove(config.errorClass);
     errorElement.textContent = "";
   }
 
