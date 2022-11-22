@@ -1,36 +1,24 @@
-const forms = document.querySelectorAll(".form");
-const newProfileForm = document.forms.form;
-const newPlaceForm = document.forms.formPlace;
-const profileName = document.querySelector(".profile__info-name");
-const profileOccupation = document.querySelector(".profile__info-occupation");
-const placesContainer = document.querySelector(".gallery");
+import {
+  forms,
+  newProfileForm,
+  newPlaceForm,
+  profileName,
+  profileOccupation,
+  placesContainer,
+  initialPlacesInfo,
+} from "./const.js";
 
-const initialPlacesInfo = [
-  {
-    title: "Valle de Yosemite",
-    url: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    title: "Lago Louise",
-    url: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    title: "Montañas Calvas",
-    url: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    title: "Latemar",
-    url: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    title: "Parque Nacional de la Vanoise",
-    url: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    title: "Lago di Braies",
-    url: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
+import Card from "./card.js";
+import {
+  profileEditButton,
+  openProfilePopup,
+  addNewPlaceButton,
+  openPlacePopup,
+  closeButtons,
+  closePopup,
+} from "./utils.js";
+
+import FormValidator from "./FormValidator.js";
 
 initialPlacesInfo.forEach((item) => {
   const card = new Card(item, ".template__place");
@@ -86,15 +74,3 @@ addNewPlaceButton.addEventListener("click", openPlacePopup);
 
 newProfileForm.addEventListener("submit", handleProfileFormSubmit);
 newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
-
-import Card from "./card.js";
-import {
-  profileEditButton,
-  openProfilePopup,
-  addNewPlaceButton,
-  openPlacePopup,
-  closeButtons,
-  closePopup,
-} from "./utils.js";
-
-import FormValidator from "./FormValidator.js";
