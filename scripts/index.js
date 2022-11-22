@@ -32,11 +32,6 @@ function renderCard(item) {
   return cardElement;
 }
 
-/*Serpara la logica de creacion de la logica de renderizado, 
-Deberias de tener una funcion que se encargue de crear el elemento y otra que se encargue de renderizarlo
- initialPlacesInfo.forEach((item) => {
-    renderCard(item)
-}*/
 function closePopupButtons(button) {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
@@ -49,8 +44,7 @@ initialPlacesInfo.forEach((item) => {
 closeButtons.forEach((button) => {
   closePopupButtons(button);
   button.removeEventListener("click", closePopupButtons(button));
-}); /*Aisla lo que hace este foreach en una funcion aparte,
- y asi poder reutilizarla*/
+});
 
 export function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
@@ -89,8 +83,11 @@ forms.forEach((form) => {
   validate.enableValidation();
 });
 
-profileEditButton.addEventListener("click", openProfilePopup);
-addNewPlaceButton.addEventListener("click", openPlacePopup);
+function addEventListeners() {
+  profileEditButton.addEventListener("click", openProfilePopup);
+  addNewPlaceButton.addEventListener("click", openPlacePopup);
+  newProfileForm.addEventListener("submit", handleProfileFormSubmit);
+  newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
+}
 
-newProfileForm.addEventListener("submit", handleProfileFormSubmit);
-newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
+addEventListeners();

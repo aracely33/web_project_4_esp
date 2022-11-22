@@ -1,22 +1,9 @@
 export default class FormValidator {
-  //Tu constructor tiene dos parámetros.
-  //El primer parámetro es un objeto de configuración "config" que almacena los selectores y las clases del formulario,
-  //el segundo toma un elemento del formulario a validar.
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
-    //this._forms = document.querySelectorAll(config.formSelector);
   }
-  //Tiene un método público enableValidation(), que activa la validación del formulario.
-  /*Al estar trabajando con clases no importa, el orden 
-  en que se llamen los métodos, pero es una buena práctica declararlos antes de usarlos.  */
-  enableValidation() {
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
 
-    this._setEventListeners(this._formElement, this._config);
-  }
   //Tiene métodos privados para:
   //agregar todos los controladores necesarios.**********
 
@@ -100,5 +87,13 @@ export default class FormValidator {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
+  }
+  //Activar la validación
+  enableValidation() {
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+    });
+
+    this._setEventListeners(this._formElement, this._config);
   }
 }

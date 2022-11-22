@@ -13,9 +13,6 @@ export default class Card {
     return cardElement;
   }
 
-  /*Los nombres de las funciones deben relacionarse con lo que hacen,
-   Esta funcion su proposito es añadir eventos, 
-   un nombre mas apropiado seria addEventListeners*/
   _addEventListeners() {
     this._element = this._getTemplate();
 
@@ -43,11 +40,7 @@ export default class Card {
     this._element.querySelector(".item__place-info-name").textContent =
       this._title;
     this._element.querySelector(".item__place").alt = this._title;
-    /*Asi como obtuviste el template,
-     deberias de obtener los elementos que 
-     necesitas esto lo puedes hacer en un metodo aparte, 
-    dado que utilizas tla palabra this este vivira 
-    en el contexto de la clase*/
+
     return this._element;
   }
 }
