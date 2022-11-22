@@ -26,11 +26,15 @@ initialPlacesInfo.forEach((item) => {
 
   document.querySelector(".gallery").append(cardElement);
 });
+/*Serpara la logica de creacion de la logica de renderizado, Deberias de tener una funcion que se encargue de crear el elemento y otra que se encargue de renderizarlo
+ initialPlacesInfo.forEach((item) => {
+    renderCard(item)
+}*/
 
 closeButtons.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
-});
+}); /*Aisla lo que hace este foreach en una funcion aparte, y asi poder reutilizarla*/
 
 export function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
