@@ -8,6 +8,8 @@ export default class FormValidator {
     //this._forms = document.querySelectorAll(config.formSelector);
   }
   //Tiene un método público enableValidation(), que activa la validación del formulario.
+  /*Al estar trabajando con clases no importa, el orden 
+  en que se llamen los métodos, pero es una buena práctica declararlos antes de usarlos.  */
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
@@ -48,26 +50,35 @@ export default class FormValidator {
 
   //cambiar el estado del botón Submit***********
 
+  _disableButton(buttonElement, config) {
+    buttonElement.classList.add(config.inactiveButtonClass);
+    buttonElement.setAttribute("disabled", true);
+  }
+
+  _ableButton(buttonElement, config) {
+    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.removeAttribute("disabled");
+  }
+
   _toggleButtonState(inputList, buttonElement, config) {
     if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(config.inactiveButtonClass);
-      buttonElement.setAttribute("disabled", true);
+      this._disableButton(buttonElement, config);
     } else {
-      buttonElement.classList.remove(config.inactiveButtonClass);
-      buttonElement.removeAttribute("disabled");
+      this._ableButton(buttonElement, config);
     }
   }
+
   //comprobar la validez del campo*************
   _checkInputValidity(formElement, inputElement) {
-    if (!inputElement.validity.valid) {
+    if (inputElement.validity.valid) {
+      this._hideInputError(formElement, inputElement, this._config);
+    } else {
       this._showInputError(
         formElement,
         inputElement,
         inputElement.validationMessage,
         this._config
       );
-    } else {
-      this._hideInputError(formElement, inputElement, this._config);
     }
   }
 
