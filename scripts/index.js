@@ -10,7 +10,7 @@ import {
 } from "./const.js";
 import Section from "../components/Section.js";
 import Card from "./card.js";
-import Popup from "./Popup.js";
+import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
 import {
   profileEditButton,
   openProfilePopup,
