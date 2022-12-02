@@ -5,6 +5,7 @@ export const profileName = document.querySelector(".profile__info-name");
 export const profileOccupation = document.querySelector(
   ".profile__info-occupation"
 );
+export const placesSelector = ".gallery";
 export const placesContainer = document.querySelector(".gallery");
 
 export const initialPlacesInfo = [

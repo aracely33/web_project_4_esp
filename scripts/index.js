@@ -4,11 +4,13 @@ import {
   newPlaceForm,
   profileName,
   profileOccupation,
+  placesSelector,
   placesContainer,
   initialPlacesInfo,
 } from "./const.js";
-
+import Section from "../components/Section.js";
 import Card from "./card.js";
+import Popup from "./Popup.js";
 import {
   profileEditButton,
   openProfilePopup,
@@ -25,21 +27,24 @@ function createCard(item, selector) {
   return card;
 }
 
-function renderCard(item) {
-  const card = createCard(item, ".template__place");
-  const cardElement = card.generateCard();
-  document.querySelector(".gallery").append(cardElement);
-  return cardElement;
-}
+const placesList = new Section(
+  {
+    data: initialPlacesInfo,
+    renderer: (item) => {
+      const card = createCard(item, ".template__place");
+      const cardElement = card.generateCard();
+      placesList.addItem(cardElement);
+    },
+  },
+  placesSelector
+);
+
+placesList.renderItems();
 
 function closePopupButtons(button) {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
 }
-
-initialPlacesInfo.forEach((item) => {
-  renderCard(item);
-});
 
 closeButtons.forEach((button) => {
   closePopupButtons(button);
