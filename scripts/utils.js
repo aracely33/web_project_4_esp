@@ -29,17 +29,10 @@ function openWithForm(selector) {
   popupForm.open();
 }
 
-/*function openPopup() {
- ;
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", handleKeyPress);
-  document.addEventListener("click", handleTap);
-}*/
-
 export function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", handleKeyPress);
-  document.removeEventListener("click", handleTap);
+  //document.removeEventListener("keydown", handleKeyPress);
+  //document.removeEventListener("click", handleTap);
 }
 
 export function handleBigImageAppear(evt) {
@@ -49,6 +42,14 @@ export function handleBigImageAppear(evt) {
   imageDescription.textContent = imageLegend;
 }
 
+/*function openPopup() {
+ ;
+  popup.classList.add("popup_opened");
+  document.addEventListener("keydown", handleKeyPress);
+  document.addEventListener("click", handleTap);
+}*/
+
+/*
 function handleKeyPress(evt) {
   if (evt.key === "Escape") {
     popupList.forEach(closePopup);
@@ -61,3 +62,4 @@ function handleTap(evt) {
     popupList.forEach(closePopup);
   }
 }
+*/
