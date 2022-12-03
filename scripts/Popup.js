@@ -11,7 +11,7 @@ export class Popup {
 
   close() {
     console.log("para cerrar");
-    this._popup.classList.remove("popup_opened");
+    this._popupElement.classList.remove("popup_opened");
   }
 
   /*almacena la lógica para cerrar el popup al pulsar la tecla Esc.*/

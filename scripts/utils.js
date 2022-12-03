@@ -30,7 +30,15 @@ function openWithForm(selector) {
 }
 
 export function closePopup(popup) {
-  popup.classList.remove("popup_opened");
+  console.log("llamaron a closePopup");
+  const clases = Array.from(popup.classList);
+  const selector = clases.find(function (item) {
+    return item.includes("popup_type");
+  });
+
+  const currentPopup = new Popup(`.${selector}`);
+  currentPopup.close();
+  //popup.classList.remove("popup_opened");
   //document.removeEventListener("keydown", handleKeyPress);
   //document.removeEventListener("click", handleTap);
 }

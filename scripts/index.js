@@ -40,6 +40,17 @@ const placesList = new Section(
 );
 
 placesList.renderItems();
+
+function closePopupButtons(button) {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => closePopup(popup));
+}
+
+closeButtons.forEach((button) => {
+  closePopupButtons(button);
+  button.removeEventListener("click", closePopup);
+});
+
 /*
 function closePopupButtons(button) {
   const popup = button.closest(".popup");
