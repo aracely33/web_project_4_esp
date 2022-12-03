@@ -1,12 +1,12 @@
 export class Popup {
   constructor(popupSelector) {
     this._popup = popupSelector;
+    this._popupElement = document.querySelector(this._popup);
   }
 
   open() {
-    console.log("para abrir");
-    console.log(this);
-    document.querySelector(this._popup).classList.add("popup_opened");
+    console.log("abrir popup");
+    this._popupElement.classList.add("popup_opened");
   }
 
   close() {

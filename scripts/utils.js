@@ -1,3 +1,4 @@
+import { Popup, PopupWithImage, PopupWithForm } from "./Popup.js";
 const popupList = document.querySelectorAll(".popup");
 export const closeButtons = document.querySelectorAll(".close-button");
 export const popupProfileForm = document.querySelector(
@@ -17,17 +18,23 @@ function openImagePopup() {
 }
 
 export function openPlacePopup() {
-  openPopup(popupPlaceForm);
+  openWithForm(".popup_type-form-new-place");
 }
 export function openProfilePopup() {
-  openPopup(popupProfileForm);
+  openWithForm(".popup_type-form-new-profile");
 }
 
-function openPopup(popup) {
+function openWithForm(selector) {
+  const popupForm = new PopupWithForm(selector);
+  popupForm.open();
+}
+
+/*function openPopup() {
+ ;
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", handleKeyPress);
   document.addEventListener("click", handleTap);
-}
+}*/
 
 export function closePopup(popup) {
   popup.classList.remove("popup_opened");

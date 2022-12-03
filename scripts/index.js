@@ -40,7 +40,7 @@ const placesList = new Section(
 );
 
 placesList.renderItems();
-
+/*
 function closePopupButtons(button) {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
@@ -86,13 +86,13 @@ forms.forEach((form) => {
     form
   );
   validate.enableValidation();
-});
+});*/
 
 function addEventListeners() {
   profileEditButton.addEventListener("click", openProfilePopup);
   addNewPlaceButton.addEventListener("click", openPlacePopup);
-  newProfileForm.addEventListener("submit", handleProfileFormSubmit);
-  newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
+  // newProfileForm.addEventListener("submit", handleProfileFormSubmit);
+  // newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
 }
 
 addEventListeners();
