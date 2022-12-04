@@ -10,14 +10,15 @@ import {
 } from "./const.js";
 import Section from "../components/Section.js";
 import Card from "./card.js";
-import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
+//import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
 import {
   profileEditButton,
   openProfilePopup,
   addNewPlaceButton,
   openPlacePopup,
   closeButtons,
-  closePopup,
+  //closePopup,
+  popupList,
 } from "./utils.js";
 
 import FormValidator from "./FormValidator.js";
@@ -40,7 +41,16 @@ const placesList = new Section(
 );
 
 placesList.renderItems();
+/*
+popupList.forEach((popup) => {
+  const clases = Array.from(popup.classList);
+  const selector = clases.find(function (item) {
+    return item.includes("popup_type");
+  });
+  const currentPopup = new Popup(`.${selector}`);
+});*/
 
+/*
 function closePopupButtons(button) {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
@@ -49,7 +59,7 @@ function closePopupButtons(button) {
 closeButtons.forEach((button) => {
   closePopupButtons(button);
   button.removeEventListener("click", closePopup);
-});
+});*/
 
 /*
 function closePopupButtons(button) {

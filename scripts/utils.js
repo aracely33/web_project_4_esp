@@ -1,5 +1,5 @@
 import { Popup, PopupWithImage, PopupWithForm } from "./Popup.js";
-const popupList = document.querySelectorAll(".popup");
+export const popupList = document.querySelectorAll(".popup");
 export const closeButtons = document.querySelectorAll(".close-button");
 export const popupProfileForm = document.querySelector(
   ".popup_type-form-new-profile"
@@ -18,17 +18,17 @@ function openImagePopup() {
 }
 
 export function openPlacePopup() {
-  openWithForm(".popup_type-form-new-place");
+  openPopup(".popup_type-form-new-place");
 }
 export function openProfilePopup() {
-  openWithForm(".popup_type-form-new-profile");
+  openPopup(".popup_type-form-new-profile");
 }
 
-function openWithForm(selector) {
-  const popupForm = new PopupWithForm(selector);
-  popupForm.open();
+function openPopup(selector) {
+  const popup = new Popup(selector);
+  popup.open();
 }
-
+/*
 export function closePopup(popup) {
   console.log("llamaron a closePopup");
   const clases = Array.from(popup.classList);
@@ -41,7 +41,7 @@ export function closePopup(popup) {
   //popup.classList.remove("popup_opened");
   //document.removeEventListener("keydown", handleKeyPress);
   //document.removeEventListener("click", handleTap);
-}
+}*/
 
 export function handleBigImageAppear(evt) {
   openImagePopup();

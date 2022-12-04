@@ -1,4 +1,4 @@
-import { handleBigImageAppear } from "./utils.js";
+//import { handleBigImageAppear } from "./utils.js";
 export default class Card {
   constructor(data, selector) {
     this._title = data.title;
