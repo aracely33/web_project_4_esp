@@ -13,10 +13,6 @@ const popupImage = document.querySelector(".popup_type-image");
 const imageDescription = document.querySelector(".popup__imagedescription");
 const image = document.querySelector(".popup__image");
 
-function openImagePopup() {
-  openPopup(popupImage);
-}
-
 export function openPlacePopup() {
   openPopup(".popup_type-form-new-place");
 }
@@ -42,13 +38,13 @@ export function closePopup(popup) {
   //document.removeEventListener("keydown", handleKeyPress);
   //document.removeEventListener("click", handleTap);
 }*/
-
+/*
 export function handleBigImageAppear(evt) {
   openImagePopup();
   const imageLegend = evt.target.alt;
   image.src = evt.target.src;
   imageDescription.textContent = imageLegend;
-}
+}*/
 
 /*function openPopup() {
  ;

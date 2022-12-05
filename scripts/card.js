@@ -1,9 +1,11 @@
 //import { handleBigImageAppear } from "./utils.js";
 export default class Card {
-  constructor(data, selector) {
+  constructor(data, callback, selector) {
+    this._data = data;
     this._title = data.title;
     this._image = data.url;
     this._selector = selector;
+    this._handleCardClick = callback;
   }
 
   _getTemplate() {
@@ -18,9 +20,7 @@ export default class Card {
 
     this._element
       .querySelector(".item__place")
-      .addEventListener("click", function (evt) {
-        handleBigImageAppear(evt);
-      });
+      .addEventListener("click", this._handleCardClick);
     this._element
       .querySelector(".item__place-like-button")
       .addEventListener("click", function (evt) {

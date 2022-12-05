@@ -22,7 +22,36 @@ import {
 } from "./utils.js";
 
 import FormValidator from "./FormValidator.js";
+import { Popup, PopupWithImage } from "./Popup.js";
+function createCard(item, callback, selector) {
+  const card = new Card(item, callback, selector);
+  return card;
+}
 
+const placesList = new Section(
+  {
+    data: initialPlacesInfo,
+    renderer: (item) => {
+      const card = createCard(
+        item,
+        (evt) => {
+          const bigImage = new PopupWithImage(".popup_type-image");
+
+          bigImage.open(evt);
+        },
+        ".template__place"
+      );
+      const cardElement = card.generateCard();
+
+      placesList.addItem(cardElement);
+    },
+  },
+  placesSelector
+);
+
+placesList.renderItems();
+
+/*
 function createCard(item, selector) {
   const card = new Card(item, selector);
   return card;
@@ -40,7 +69,7 @@ const placesList = new Section(
   placesSelector
 );
 
-placesList.renderItems();
+placesList.renderItems();*/
 /*
 popupList.forEach((popup) => {
   const clases = Array.from(popup.classList);

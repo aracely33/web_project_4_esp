@@ -2,7 +2,6 @@ export class Popup {
   constructor(popupSelector) {
     this._popup = popupSelector;
     this._popupElement = document.querySelector(this._popup);
-    console.log(this._popupElement);
   }
 
   open() {
@@ -14,6 +13,9 @@ export class Popup {
   close() {
     console.log("para cerrar");
     this._popupElement.classList.remove("popup_opened");
+    document.removeEventListener("keydown", this._handleEscClose);
+    document.removeEventListener("click", this._handleTap);
+    document.removeEventListener("click", this._handleCloseButton);
   }
 
   /*almacena la lógica para cerrar el popup al pulsar la tecla Esc.*/
@@ -53,10 +55,15 @@ export class Popup {
 
 export class PopupWithImage extends Popup {
   open(evt) {
+    const image = this._popupElement.querySelector(".popup__image");
+    image.src = evt.target.src;
+    const imageDescription = this._popupElement.querySelector(
+      ".popup__imagedescription"
+    );
+    const imageLegend = evt.target.alt;
+    imageDescription.textContent = imageLegend;
+
     super.open();
-    console.log(evt);
-    //this.popupElement = document.querySelector(".popup_type-image");
-    //popupImage.src = this._image;
   }
 }
 
