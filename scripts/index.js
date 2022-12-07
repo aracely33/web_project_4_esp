@@ -52,7 +52,31 @@ const placesList = new Section(
 placesList.renderItems();
 
 function handleFormSubmit(value) {
-  console.log(value);
+  const morePlaces = [
+    {
+      title: value.title,
+      url: value.image,
+    },
+  ];
+  const newPlacesList = new Section(
+    {
+      data: morePlaces,
+      renderer: (item) => {
+        const card = createCard(
+          item,
+          (evt) => {
+            const bigImage = new PopupWithImage(".popup_type-image");
+          },
+          ".template__place"
+        );
+        const cardElement = card.generateCard();
+
+        newPlacesList.addItem(cardElement);
+      },
+    },
+    placesSelector
+  );
+  newPlacesList.renderItems();
 }
 
 const placePopupForm = new PopupWithForm(
@@ -72,12 +96,15 @@ function openProfileFormPopup() {
   openPopup(profilePopupForm);
 }
 
+/*
 export function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
+
   const data = {
     title: `${evt.target.elements.title.value}`,
     url: `${evt.target.elements.image.value}`,
   };
+  console.log(data);
   const newCard = new Card(data, ".template__place");
   const newPlace = newCard.generateCard();
   placesContainer.prepend(newPlace);
@@ -91,7 +118,7 @@ export function handleProfileFormSubmit(evt) {
   profileOccupation.textContent = evt.target.elements.ocupación.value;
   evt.target.reset();
   closePopup(evt.target.closest(".popup"));
-}
+}*/
 
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
 forms.forEach((form) => {
@@ -112,8 +139,8 @@ forms.forEach((form) => {
 function addEventListeners() {
   profileEditButton.addEventListener("click", openProfileFormPopup);
   addNewPlaceButton.addEventListener("click", openPlaceFormPopup);
-  // newProfileForm.addEventListener("submit", handleProfileFormSubmit);
-  // newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
+  newProfileForm.addEventListener("submit", handleFormSubmit);
+  //newPlaceForm.addEventListener("submit", handleFormSubmit);
 }
 
 addEventListeners();

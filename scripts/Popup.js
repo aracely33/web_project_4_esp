@@ -109,7 +109,6 @@ export class PopupWithForm extends Popup {
   }
 
   /*
-  
   Modifica el método padre setEventListeners(). 
   El método setEventListeners() de la clase PopupWithForm debe
   agregar al formulario un controlador de eventos submit 
