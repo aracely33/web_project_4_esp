@@ -139,7 +139,7 @@ forms.forEach((form) => {
 function addEventListeners() {
   profileEditButton.addEventListener("click", openProfileFormPopup);
   addNewPlaceButton.addEventListener("click", openPlaceFormPopup);
-  newProfileForm.addEventListener("submit", handleFormSubmit);
+  //newProfileForm.addEventListener("submit", handleFormSubmit);
   //newPlaceForm.addEventListener("submit", handleFormSubmit);
 }
 
