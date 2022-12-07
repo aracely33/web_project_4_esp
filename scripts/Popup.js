@@ -74,9 +74,7 @@ export class PopupWithForm extends Popup {
     this._formSelector = popupSelector;
     this._popupForm = document.querySelector(this._formSelector);
     this._formElement = this._popupForm.querySelector(".form");
-    console.log(this._formElement);
     this._handleFormSubmit = handleFormSubmit;
-    console.log(this._handleFormSubmit);
   }
   /*Almacena un método privado llamado _getInputValues(),
    que recopila datos de todos los campos de entrada.*/

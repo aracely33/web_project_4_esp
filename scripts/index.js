@@ -7,6 +7,7 @@ import {
   placesSelector,
   placesContainer,
   initialPlacesInfo,
+  profileSelector,
 } from "./const.js";
 import Section from "../components/Section.js";
 import Card from "./card.js";
@@ -23,11 +24,12 @@ import {
 
 import FormValidator from "./FormValidator.js";
 import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
+import UserInfo from "./UserInfo.js";
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
 }
-
+//Para lugars iniiales
 const placesList = new Section(
   {
     data: initialPlacesInfo,
@@ -51,7 +53,13 @@ const placesList = new Section(
 
 placesList.renderItems();
 
-function handleFormSubmit(value) {
+//Función global de PopupWithForm
+function handleFormSubmit(value, callback) {
+  callback(value);
+}
+
+//callback para agregar nuevo lugar
+function addNewPlace(value) {
   const morePlaces = [
     {
       title: value.title,
@@ -78,16 +86,54 @@ function handleFormSubmit(value) {
   );
   newPlacesList.renderItems();
 }
+//callback para agregar nuevo perfil
 
+function addNewProfile(value) {
+  const newProfile = [
+    {
+      nombre: value.nombre,
+      ocupación: value.ocupación,
+    },
+  ];
+  const profile = new Section(
+    {
+      data: newProfile,
+      renderer: (item) => {
+        const ProfileInfo = new UserInfo(
+          ".profile__info-name",
+          ".profile__info-occupation"
+        );
+        const infoElement = ProfileInfo.setUserInfo(item);
+        profile.addItem(infoElement);
+      },
+    },
+    ".profile__info"
+  );
+  profile.renderItems();
+}
+
+//Manejadores Finales**Mejora el nombre
+function handleNewPlaceFormSubmit(value) {
+  handleFormSubmit(value, addNewPlace);
+}
+
+function handleNewProfileFormSubmit(value) {
+  handleFormSubmit(value, addNewProfile);
+}
+
+//////
 const placePopupForm = new PopupWithForm(
   ".popup_type-form-new-place",
-  handleFormSubmit
+  handleNewPlaceFormSubmit
 );
+
+//
 
 const profilePopupForm = new PopupWithForm(
   ".popup_type-form-new-profile",
-  handleFormSubmit
+  handleNewProfileFormSubmit
 );
+////////
 
 function openPlaceFormPopup() {
   openPopup(placePopupForm);
@@ -97,20 +143,6 @@ function openProfileFormPopup() {
 }
 
 /*
-export function handleNewPlaceFormSubmit(evt) {
-  evt.preventDefault();
-
-  const data = {
-    title: `${evt.target.elements.title.value}`,
-    url: `${evt.target.elements.image.value}`,
-  };
-  console.log(data);
-  const newCard = new Card(data, ".template__place");
-  const newPlace = newCard.generateCard();
-  placesContainer.prepend(newPlace);
-  evt.target.reset();
-  closePopup(evt.target.closest(".popup"));
-}
 
 export function handleProfileFormSubmit(evt) {
   evt.preventDefault();
