@@ -12,17 +12,17 @@ import Section from "../components/Section.js";
 import Card from "./card.js";
 //import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
 import {
+  openPopup,
   profileEditButton,
-  openProfilePopup,
+  //openPlaceFormPopup,
   addNewPlaceButton,
-  openPlacePopup,
+  //openProfileFormPopup,
   closeButtons,
-  //closePopup,
   popupList,
 } from "./utils.js";
 
 import FormValidator from "./FormValidator.js";
-import { Popup, PopupWithImage } from "./Popup.js";
+import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
@@ -51,55 +51,26 @@ const placesList = new Section(
 
 placesList.renderItems();
 
-/*
-function createCard(item, selector) {
-  const card = new Card(item, selector);
-  return card;
+function handleFormSubmit(value) {
+  console.log(value);
 }
 
-const placesList = new Section(
-  {
-    data: initialPlacesInfo,
-    renderer: (item) => {
-      const card = createCard(item, ".template__place");
-      const cardElement = card.generateCard();
-      placesList.addItem(cardElement);
-    },
-  },
-  placesSelector
+const placePopupForm = new PopupWithForm(
+  ".popup_type-form-new-place",
+  handleFormSubmit
 );
 
-placesList.renderItems();*/
-/*
-popupList.forEach((popup) => {
-  const clases = Array.from(popup.classList);
-  const selector = clases.find(function (item) {
-    return item.includes("popup_type");
-  });
-  const currentPopup = new Popup(`.${selector}`);
-});*/
+const profilePopupForm = new PopupWithForm(
+  ".popup_type-form-new-profile",
+  handleFormSubmit
+);
 
-/*
-function closePopupButtons(button) {
-  const popup = button.closest(".popup");
-  button.addEventListener("click", () => closePopup(popup));
+function openPlaceFormPopup() {
+  openPopup(placePopupForm);
 }
-
-closeButtons.forEach((button) => {
-  closePopupButtons(button);
-  button.removeEventListener("click", closePopup);
-});*/
-
-/*
-function closePopupButtons(button) {
-  const popup = button.closest(".popup");
-  button.addEventListener("click", () => closePopup(popup));
+function openProfileFormPopup() {
+  openPopup(profilePopupForm);
 }
-
-closeButtons.forEach((button) => {
-  closePopupButtons(button);
-  button.removeEventListener("click", closePopupButtons(button));
-});
 
 export function handleNewPlaceFormSubmit(evt) {
   evt.preventDefault();
@@ -136,11 +107,11 @@ forms.forEach((form) => {
     form
   );
   validate.enableValidation();
-});*/
+});
 
 function addEventListeners() {
-  profileEditButton.addEventListener("click", openProfilePopup);
-  addNewPlaceButton.addEventListener("click", openPlacePopup);
+  profileEditButton.addEventListener("click", openProfileFormPopup);
+  addNewPlaceButton.addEventListener("click", openPlaceFormPopup);
   // newProfileForm.addEventListener("submit", handleProfileFormSubmit);
   // newPlaceForm.addEventListener("submit", handleNewPlaceFormSubmit);
 }
