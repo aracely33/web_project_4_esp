@@ -17,8 +17,6 @@ export default class UserInfo {
     this._userJobSelector = userJobSelector;
     this._userNameContainer = document.querySelector(this._userNameSelector);
     this._userJobContainer = document.querySelector(this._userJobSelector);
-    this._userNameContainer.textcontent = "";
-    this._userJobContainer.textcontent = "";
   }
 
   getUserInfo(item) {
@@ -29,12 +27,7 @@ export default class UserInfo {
   setUserInfo(item) {
     this.getUserInfo(item);
     console.log(this._userInfo);
-
-    //console.log(this._userNameContainer.textcontent);
-    // console.log(this._userJobContainer.textcontent);
-    //this._userNameContainer.textcontent = this._userInfo.nombre;
-    //this._userJobContainer.textcontent = this._userInfo.ocupación;
-    //userNameContainer.textcontent = this._userInfo.nombre;
-    //userJobContainer.textcontent = this._userInfo.ocupación;
+    this._userNameContainer.textContent = this._userInfo.nombre;
+    this._userJobContainer.textContent = this._userInfo.ocupación;
   }
 }

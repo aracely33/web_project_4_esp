@@ -142,16 +142,6 @@ function openProfileFormPopup() {
   openPopup(profilePopupForm);
 }
 
-/*
-
-export function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = evt.target.elements.nombre.value;
-  profileOccupation.textContent = evt.target.elements.ocupación.value;
-  evt.target.reset();
-  closePopup(evt.target.closest(".popup"));
-}*/
-
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
 forms.forEach((form) => {
   const validate = new FormValidator(
@@ -171,8 +161,6 @@ forms.forEach((form) => {
 function addEventListeners() {
   profileEditButton.addEventListener("click", openProfileFormPopup);
   addNewPlaceButton.addEventListener("click", openPlaceFormPopup);
-  //newProfileForm.addEventListener("submit", handleFormSubmit);
-  //newPlaceForm.addEventListener("submit", handleFormSubmit);
 }
 
 addEventListeners();
