@@ -78,6 +78,7 @@ function addNewPlace(value) {
           ".template__place"
         );
         const cardElement = card.generateCard();
+        console.log(cardElement);
 
         newPlacesList.addItem(cardElement);
       },
