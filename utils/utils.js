@@ -1,4 +1,4 @@
-import { Popup, PopupWithImage, PopupWithForm } from "./Popup.js";
+import { Popup, PopupWithImage, PopupWithForm } from "../components/Popup.js";
 export const popupList = document.querySelectorAll(".popup");
 export const closeButtons = document.querySelectorAll(".close-button");
 export const popupProfileForm = document.querySelector(

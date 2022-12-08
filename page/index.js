@@ -8,9 +8,9 @@ import {
   placesContainer,
   initialPlacesInfo,
   profileSelector,
-} from "./const.js";
+} from "../utils/const.js";
 import Section from "../components/Section.js";
-import Card from "./card.js";
+import Card from "../components/card.js";
 //import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
 import {
   openPopup,
@@ -20,11 +20,11 @@ import {
   //openProfileFormPopup,
   closeButtons,
   popupList,
-} from "./utils.js";
+} from "../utils/utils.js";
 
-import FormValidator from "./FormValidator.js";
-import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
-import UserInfo from "./UserInfo.js";
+import FormValidator from "../components/FormValidator.js";
+import { Popup, PopupWithForm, PopupWithImage } from "../components/Popup.js";
+import UserInfo from "../components/UserInfo.js";
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
