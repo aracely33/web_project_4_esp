@@ -20,14 +20,16 @@ export default class UserInfo {
   }
 
   getUserInfo(item) {
+    console.log("llamaste a getUserInfo");
     this._userInfo = item;
     return this._userInfo;
   }
 
   setUserInfo(item) {
+    console.log("llamaste a seUserInfo");
     this.getUserInfo(item);
-    console.log(this._userInfo);
     this._userNameContainer.textContent = this._userInfo.nombre;
     this._userJobContainer.textContent = this._userInfo.ocupación;
+    console.log("ya cambié el contenido de profile");
   }
 }

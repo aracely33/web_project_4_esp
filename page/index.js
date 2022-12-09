@@ -29,7 +29,8 @@ function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
 }
-//Para lugars iniiales
+//Para lugaress iniciales//¿tal vez también pueda estar encerrada
+//dentro de una función?
 const placesList = new Section(
   {
     data: initialPlacesInfo,
@@ -53,88 +54,71 @@ const placesList = new Section(
 
 placesList.renderItems();
 
-//Función global de PopupWithForm
-function handleFormSubmit(value, callback) {
-  callback(value);
-}
+//////Nueva instancia de PopUpForm para el perfil
 
-//callback para agregar nuevo lugar
-function addNewPlace(value) {
-  const morePlaces = [
-    {
-      title: value.title,
-      url: value.image,
-    },
-  ];
-  const newPlacesList = new Section(
-    {
-      data: morePlaces,
-      renderer: (item) => {
-        const card = createCard(
-          item,
-          (evt) => {
-            const bigImage = new PopupWithImage(".popup_type-image");
-          },
-          ".template__place"
-        );
-        const cardElement = card.generateCard();
-        console.log(cardElement);
-
-        newPlacesList.addItem(cardElement);
+const profilePopupForm = new PopupWithForm({
+  popupSelector: ".popup_type-form-new-profile",
+  handleFormSubmit: (value) => {
+    const newProfile = [
+      {
+        nombre: value.nombre,
+        ocupación: value.ocupación,
       },
-    },
-    placesSelector
-  );
-  newPlacesList.renderItems();
-}
-//callback para agregar nuevo perfil
-
-function addNewProfile(value) {
-  const newProfile = [
-    {
-      nombre: value.nombre,
-      ocupación: value.ocupación,
-    },
-  ];
-  const profile = new Section(
-    {
-      data: newProfile,
-      renderer: (item) => {
-        const ProfileInfo = new UserInfo(
-          ".profile__info-name",
-          ".profile__info-occupation"
-        );
-        const infoElement = ProfileInfo.setUserInfo(item);
-        profile.addItem(infoElement);
+    ];
+    const profile = new Section(
+      {
+        data: newProfile,
+        renderer: (item) => {
+          console.log(item);
+          const ProfileInfo = new UserInfo(
+            ".profile__info-name",
+            ".profile__info-occupation"
+          );
+          const infoElement = ProfileInfo.setUserInfo(item);
+          // profile.addItem(infoElement);
+        },
       },
-    },
-    ".profile__info"
-  );
-  profile.renderItems();
-}
-
-//Manejadores Finales**Mejora el nombre
-function handleNewPlaceFormSubmit(value) {
-  handleFormSubmit(value, addNewPlace);
-}
-
-function handleNewProfileFormSubmit(value) {
-  handleFormSubmit(value, addNewProfile);
-}
-
-//////
-const placePopupForm = new PopupWithForm(
-  ".popup_type-form-new-place",
-  handleNewPlaceFormSubmit
-);
-
-//
-
-const profilePopupForm = new PopupWithForm(
-  ".popup_type-form-new-profile",
-  handleNewProfileFormSubmit
-);
+      ".profile__info"
+    );
+    //
+    profile.renderItems();
+  },
+});
 ////////
+
+//////Nueva instancia de PopUpForm para el lugar
+
+const placePopupForm = new PopupWithForm({
+  popupSelector: ".popup_type-form-new-place",
+  handleFormSubmit: (value) => {
+    const morePlaces = [
+      {
+        title: value.title,
+        url: value.image,
+      },
+    ];
+    const newPlacesList = new Section(
+      {
+        data: morePlaces,
+        renderer: (item) => {
+          const card = createCard(
+            item,
+            (evt) => {
+              const bigImage = new PopupWithImage(".popup_type-image");
+            },
+            ".template__place"
+          );
+          const cardElement = card.generateCard();
+          console.log(cardElement);
+
+          newPlacesList.addItem(cardElement);
+        },
+      },
+      placesSelector
+    );
+    newPlacesList.renderItems();
+  },
+});
 
 function openPlaceFormPopup() {
   openPopup(placePopupForm);
@@ -165,3 +149,79 @@ function addEventListeners() {
 }
 
 addEventListeners();
+
+//callback para agregar nuevo lugar
+/*
+function addNewPlace(value) {
+  const morePlaces = [
+    {
+      title: value.title,
+      url: value.image,
+    },
+  ];
+  const newPlacesList = new Section(
+    {
+      data: morePlaces,
+      renderer: (item) => {
+        const card = createCard(
+          item,
+          (evt) => {
+            const bigImage = new PopupWithImage(".popup_type-image");
+          },
+          ".template__place"
+        );
+        const cardElement = card.generateCard();
+        console.log(cardElement);
+
+        newPlacesList.addItem(cardElement);
+      },
+    },
+    placesSelector
+  );
+  newPlacesList.renderItems();
+}*/
+
+//callback para agregar nuevo perfil
+/*
+function addNewProfile(value) {
+  const newProfile = [
+    {
+      nombre: value.nombre,
+      ocupación: value.ocupación,
+    },
+  ];
+  const profile = new Section(
+    {
+      data: newProfile,
+      renderer: (item) => {
+        console.log(item);
+        const ProfileInfo = new UserInfo(
+          ".profile__info-name",
+          ".profile__info-occupation"
+        );
+        const infoElement = ProfileInfo.setUserInfo(item);
+        // profile.addItem(infoElement);
+      },
+    },
+    ".profile__info"
+  );
+  //
+  profile.renderItems();
+  console.log("aqui se termina addNewProfile");
+} /////////////*/
+
+//Función global de PopupWithForm
+/*function handleFormSubmit(value, callback) {
+  callback(value);
+}*/
+
+/*
+//Manejadores Finales*
+function NewPlaceFormSubmit(value) {
+  handleFormSubmit(value, addNewPlace);
+}*/
+
+/*
+function NewProfileFormSubmit(value) {
+  handleFormSubmit(value, addNewProfile);
+}*/

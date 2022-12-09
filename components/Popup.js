@@ -11,11 +11,12 @@ export class Popup {
   }
 
   close() {
-    console.log("para cerrar");
+    console.log("para cerrar este es el close de Popup Padre");
     this._popupElement.classList.remove("popup_opened");
     document.removeEventListener("keydown", this._handleEscClose);
     document.removeEventListener("click", this._handleTap);
     document.removeEventListener("click", this._handleCloseButton);
+    console.log("Aquí se termina el close() de Popup padre");
   }
 
   /*almacena la lógica para cerrar el popup al pulsar la tecla Esc.*/
@@ -69,40 +70,44 @@ export class PopupWithImage extends Popup {
 
 export class PopupWithForm extends Popup {
   //lleva un callback del envío del formulario al constructor, así como el selector popup.
-  constructor(popupSelector, handleFormSubmit) {
+  constructor({ popupSelector, handleFormSubmit }) {
     super(popupSelector);
-    this._formSelector = popupSelector;
-    this._popupForm = document.querySelector(this._formSelector);
-    this._formElement = this._popupForm.querySelector(".form");
+    this._formElement = this._popupElement.querySelector(".form");
+    console.log(this._formElement);
     this._handleFormSubmit = handleFormSubmit;
+    console.log(this);
   }
-  /*Almacena un método privado llamado _getInputValues(),
-   que recopila datos de todos los campos de entrada.*/
 
-  _getInputValues() {
-    this._inputList = this._formElement.querySelectorAll(".form__input");
+  /*recopila datos de todos los campos de entrada.*/
+  _getInputValues(evt) {
+    console.log("soy _getInputValues");
+    /*this._inputList = this._formElement.querySelectorAll(".form__input");
+    console.log(this._inputList);
     this._formValues = {};
     this._inputList.forEach(
       (input) => (this._formValues[input.name] = input.value)
     );
+    return this._formValues;*/
+  }
 
-    return this._formValues;
+  _popupFormSubmit(evt, getInputValues) {
+    evt.preventDefault();
+    console.log(evt.target);
+    getInputValues;
+
+    //this._handleFormSubmit(this._getInputValues);
+    //this.close();
   }
 
   setEventListeners() {
     super.setEventListeners();
-    console.log("soy el eventListeners de PopupWithForm");
-
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this._handleFormSubmit(this._getInputValues());
-      this.close();
-    });
+    this._formElement.addEventListener("submit", this._popupFormSubmit);
   }
 
   //modifica el método padre close() para reiniciar  el formularioha cuando cerrado el popup.
   close() {
     this._formElement.reset();
+    this._formElement.removeEventListener("submit", this._popupFormSubmit);
     super.close();
   }
 
@@ -115,3 +120,23 @@ export class PopupWithForm extends Popup {
   Crea una instancia de la clase PopupWithForm para cada popup.
   */
 }
+
+/*
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+      this.close();
+    });
+
+
+  */
+/*
+  _popupFormSubmit(evt) {
+    evt.preventDefault();
+
+    this.close();
+  }*/
+
+//this._formElement.addEventListener("submit", this._popupFormSubmit);
+
+//this._formElement.removeEventListener("submit", this._popupFormSubmit);
