@@ -47,7 +47,6 @@ export class Popup {
 
   //que agrega un detector de eventos de click al icono cerrar del popup
   setEventListeners() {
-    console.log("llamaste a setEventListeners original tambien");
     document.addEventListener("keydown", this._handleEscClose);
     document.addEventListener("click", this._handleTap);
     document.addEventListener("click", this._handleCloseButton);
@@ -63,7 +62,6 @@ export class PopupWithImage extends Popup {
     );
     const imageLegend = evt.target.alt;
     imageDescription.textContent = imageLegend;
-
     super.open();
   }
 }
@@ -73,70 +71,38 @@ export class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
     super(popupSelector);
     this._formElement = this._popupElement.querySelector(".form");
-    console.log(this._formElement);
     this._handleFormSubmit = handleFormSubmit;
-    console.log(this);
+    this._popupFormSubmit = this._popupFormSubmit.bind(this);
   }
 
   /*recopila datos de todos los campos de entrada.*/
-  _getInputValues(evt) {
+  _getInputValues() {
     console.log("soy _getInputValues");
-    /*this._inputList = this._formElement.querySelectorAll(".form__input");
-    console.log(this._inputList);
+    this._inputList = this._formElement.querySelectorAll(".form__input");
     this._formValues = {};
     this._inputList.forEach(
       (input) => (this._formValues[input.name] = input.value)
     );
-    return this._formValues;*/
+    return this._formValues;
   }
 
-  _popupFormSubmit(evt, getInputValues) {
+  _popupFormSubmit(evt) {
     evt.preventDefault();
-    console.log(evt.target);
-    getInputValues;
-
-    //this._handleFormSubmit(this._getInputValues);
-    //this.close();
+    console.log(this._formValues);
+    this._handleFormSubmit(this._getInputValues());
+    this._formElement.reset();
+    this.close();
   }
 
   setEventListeners() {
     super.setEventListeners();
+    console.log(this);
     this._formElement.addEventListener("submit", this._popupFormSubmit);
   }
 
   //modifica el método padre close() para reiniciar  el formularioha cuando cerrado el popup.
   close() {
-    this._formElement.reset();
     this._formElement.removeEventListener("submit", this._popupFormSubmit);
     super.close();
   }
-
-  /*
-  Modifica el método padre setEventListeners(). 
-  El método setEventListeners() de la clase PopupWithForm debe
-  agregar al formulario un controlador de eventos submit 
-  y el detector de eventos click para el icono cerrar.
-  Modifica el método padre close() para reiniciar el formulario cuando se ha cerrado el popup.
-  Crea una instancia de la clase PopupWithForm para cada popup.
-  */
 }
-
-/*
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this._handleFormSubmit(this._getInputValues());
-      this.close();
-    });
-
-
-  */
-/*
-  _popupFormSubmit(evt) {
-    evt.preventDefault();
-
-    this.close();
-  }*/
-
-//this._formElement.addEventListener("submit", this._popupFormSubmit);
-
-//this._formElement.removeEventListener("submit", this._popupFormSubmit);

@@ -28,6 +28,7 @@ export default class UserInfo {
   setUserInfo(item) {
     console.log("llamaste a seUserInfo");
     this.getUserInfo(item);
+    console.log(item);
     this._userNameContainer.textContent = this._userInfo.nombre;
     this._userJobContainer.textContent = this._userInfo.ocupación;
     console.log("ya cambié el contenido de profile");

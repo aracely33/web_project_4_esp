@@ -31,6 +31,7 @@ function createCard(item, callback, selector) {
 }
 //Para lugaress iniciales//¿tal vez también pueda estar encerrada
 //dentro de una función?
+
 const placesList = new Section(
   {
     data: initialPlacesInfo,
@@ -45,7 +46,6 @@ const placesList = new Section(
         ".template__place"
       );
       const cardElement = card.generateCard();
-
       placesList.addItem(cardElement);
     },
   },
