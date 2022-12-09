@@ -1,13 +1,9 @@
-export const forms = document.querySelectorAll(".form");
-export const newProfileForm = document.forms.form;
-export const newPlaceForm = document.forms.formPlace;
-export const profileName = document.querySelector(".profile__info-name");
-export const profileOccupation = document.querySelector(
-  ".profile__info-occupation"
+export const addNewPlaceButton = document.querySelector(".profile__add-button");
+export const profileEditButton = document.querySelector(
+  ".profile__info-edit-button"
 );
-
+export const forms = document.querySelectorAll(".form");
 export const placesSelector = ".gallery";
-export const placesContainer = document.querySelector(".gallery");
 export const profileSelector = ".profile__info";
 
 export const initialPlacesInfo = [

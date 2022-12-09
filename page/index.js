@@ -1,24 +1,14 @@
 import {
   forms,
-  newProfileForm,
-  newPlaceForm,
-  profileName,
-  profileOccupation,
   placesSelector,
-  placesContainer,
   initialPlacesInfo,
   profileSelector,
+  addNewPlaceButton,
+  profileEditButton,
 } from "../utils/const.js";
 import Section from "../components/Section.js";
 import Card from "../components/card.js";
-import {
-  openPopup,
-  profileEditButton,
-  addNewPlaceButton,
-  closeButtons,
-  popupList,
-} from "../utils/utils.js";
-
+import { openPopup } from "../utils/utils.js";
 import FormValidator from "../components/FormValidator.js";
 import { Popup, PopupWithForm, PopupWithImage } from "../components/Popup.js";
 import UserInfo from "../components/UserInfo.js";
@@ -26,8 +16,7 @@ function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
 }
-//Para lugaress iniciales//¿tal vez también pueda estar encerrada
-//dentro de una función?
+//Para lugaress iniciales
 
 const placesList = new Section(
   {
@@ -75,7 +64,7 @@ const profilePopupForm = new PopupWithForm({
           // profile.addItem(infoElement);
         },
       },
-      ".profile__info"
+      profileSelector
     );
     //
     profile.renderItems();
@@ -117,13 +106,6 @@ const placePopupForm = new PopupWithForm({
   },
 });
 
-function openPlaceFormPopup() {
-  openPopup(placePopupForm);
-}
-function openProfileFormPopup() {
-  openPopup(profilePopupForm);
-}
-
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
 forms.forEach((form) => {
   const validate = new FormValidator(
@@ -139,6 +121,13 @@ forms.forEach((form) => {
   );
   validate.enableValidation();
 });
+
+function openPlaceFormPopup() {
+  openPopup(placePopupForm);
+}
+function openProfileFormPopup() {
+  openPopup(profilePopupForm);
+}
 
 function addEventListeners() {
   profileEditButton.addEventListener("click", openProfileFormPopup);
