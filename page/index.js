@@ -11,13 +11,10 @@ import {
 } from "../utils/const.js";
 import Section from "../components/Section.js";
 import Card from "../components/card.js";
-//import { Popup, PopupWithForm, PopupWithImage } from "./Popup.js";
 import {
   openPopup,
   profileEditButton,
-  //openPlaceFormPopup,
   addNewPlaceButton,
-  //openProfileFormPopup,
   closeButtons,
   popupList,
 } from "../utils/utils.js";
@@ -149,79 +146,3 @@ function addEventListeners() {
 }
 
 addEventListeners();
-
-//callback para agregar nuevo lugar
-/*
-function addNewPlace(value) {
-  const morePlaces = [
-    {
-      title: value.title,
-      url: value.image,
-    },
-  ];
-  const newPlacesList = new Section(
-    {
-      data: morePlaces,
-      renderer: (item) => {
-        const card = createCard(
-          item,
-          (evt) => {
-            const bigImage = new PopupWithImage(".popup_type-image");
-          },
-          ".template__place"
-        );
-        const cardElement = card.generateCard();
-        console.log(cardElement);
-
-        newPlacesList.addItem(cardElement);
-      },
-    },
-    placesSelector
-  );
-  newPlacesList.renderItems();
-}*/
-
-//callback para agregar nuevo perfil
-/*
-function addNewProfile(value) {
-  const newProfile = [
-    {
-      nombre: value.nombre,
-      ocupación: value.ocupación,
-    },
-  ];
-  const profile = new Section(
-    {
-      data: newProfile,
-      renderer: (item) => {
-        console.log(item);
-        const ProfileInfo = new UserInfo(
-          ".profile__info-name",
-          ".profile__info-occupation"
-        );
-        const infoElement = ProfileInfo.setUserInfo(item);
-        // profile.addItem(infoElement);
-      },
-    },
-    ".profile__info"
-  );
-  //
-  profile.renderItems();
-  console.log("aqui se termina addNewProfile");
-} /////////////*/
-
-//Función global de PopupWithForm
-/*function handleFormSubmit(value, callback) {
-  callback(value);
-}*/
-
-/*
-//Manejadores Finales*
-function NewPlaceFormSubmit(value) {
-  handleFormSubmit(value, addNewPlace);
-}*/
-
-/*
-function NewProfileFormSubmit(value) {
-  handleFormSubmit(value, addNewProfile);
-}*/
