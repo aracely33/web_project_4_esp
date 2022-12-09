@@ -1,22 +1,19 @@
-export class Popup {
+export default class Popup {
   constructor(popupSelector) {
     this._popup = popupSelector;
     this._popupElement = document.querySelector(this._popup);
   }
 
   open() {
-    console.log("abrir popup");
     this._popupElement.classList.add("popup_opened");
     this.setEventListeners();
   }
 
   close() {
-    console.log("para cerrar este es el close de Popup Padre");
     this._popupElement.classList.remove("popup_opened");
     document.removeEventListener("keydown", this._handleEscClose);
     document.removeEventListener("click", this._handleTap);
     document.removeEventListener("click", this._handleCloseButton);
-    console.log("Aquí se termina el close() de Popup padre");
   }
 
   /*almacena la lógica para cerrar el popup al pulsar la tecla Esc.*/
@@ -52,7 +49,7 @@ export class Popup {
     document.addEventListener("click", this._handleCloseButton);
   }
 }
-
+/*
 export class PopupWithImage extends Popup {
   open(evt) {
     const image = this._popupElement.querySelector(".popup__image");
@@ -75,7 +72,7 @@ export class PopupWithForm extends Popup {
     this._popupFormSubmit = this._popupFormSubmit.bind(this);
   }
 
-  /*recopila datos de todos los campos de entrada.*/
+
   _getInputValues() {
     console.log("soy _getInputValues");
     this._inputList = this._formElement.querySelectorAll(".form__input");
@@ -105,4 +102,4 @@ export class PopupWithForm extends Popup {
     this._formElement.removeEventListener("submit", this._popupFormSubmit);
     super.close();
   }
-}
+}*/

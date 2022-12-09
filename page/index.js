@@ -10,7 +10,8 @@ import Section from "../components/Section.js";
 import Card from "../components/card.js";
 import { openPopup } from "../utils/utils.js";
 import FormValidator from "../components/FormValidator.js";
-import { Popup, PopupWithForm, PopupWithImage } from "../components/Popup.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithform.js";
 import UserInfo from "../components/UserInfo.js";
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
@@ -55,13 +56,11 @@ const profilePopupForm = new PopupWithForm({
       {
         data: newProfile,
         renderer: (item) => {
-          console.log(item);
           const ProfileInfo = new UserInfo(
             ".profile__info-name",
             ".profile__info-occupation"
           );
           const infoElement = ProfileInfo.setUserInfo(item);
-          // profile.addItem(infoElement);
         },
       },
       profileSelector
@@ -95,7 +94,6 @@ const placePopupForm = new PopupWithForm({
             ".template__place"
           );
           const cardElement = card.generateCard();
-          console.log(cardElement);
 
           newPlacesList.addItem(cardElement);
         },

@@ -6,15 +6,12 @@ export default class Section {
   }
 
   renderItems() {
-    console.log("llamasta a renderItems() de Section");
     this._renderedItems.forEach((item) => {
       this._renderer(item);
     });
   }
 
   addItem(element) {
-    console.log("llamasta a addItem() de Section");
-    console.log(this._container);
     this._container.append(element);
   }
 }
