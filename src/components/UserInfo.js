@@ -1,4 +1,4 @@
-export default class UserInfo {
+class UserInfo {
   constructor(userNameSelector, userJobSelector) {
     this._userNameSelector = userNameSelector;
     this._userJobSelector = userJobSelector;
@@ -17,3 +17,5 @@ export default class UserInfo {
     this._userJobContainer.textContent = this._userInfo.ocupación;
   }
 }
+
+module.exports = UserInfo;

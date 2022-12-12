@@ -1,12 +1,12 @@
-export const addNewPlaceButton = document.querySelector(".profile__add-button");
-export const profileEditButton = document.querySelector(
+exports.addNewPlaceButton = document.querySelector(".profile__add-button");
+exports.profileEditButton = document.querySelector(
   ".profile__info-edit-button"
 );
-export const forms = document.querySelectorAll(".form");
-export const placesSelector = ".gallery";
-export const profileSelector = ".profile__info";
+exports.forms = document.querySelectorAll(".form");
+exports.placesSelector = ".gallery";
+exports.profileSelector = ".profile__info";
 
-export const initialPlacesInfo = [
+exports.initialPlacesInfo = [
   {
     title: "Valle de Yosemite",
     url: "https://code.s3.yandex.net/web-code/yosemite.jpg",

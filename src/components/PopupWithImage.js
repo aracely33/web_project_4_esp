@@ -1,5 +1,6 @@
-import Popup from "./Popup.js";
-export default class PopupWithImage extends Popup {
+//import Popup from "./Popup.js";
+const Popup = require("./Popup");
+class PopupWithImage extends Popup {
   open(evt) {
     const image = this._popupElement.querySelector(".popup__image");
     image.src = evt.target.src;
@@ -11,3 +12,5 @@ export default class PopupWithImage extends Popup {
     super.open();
   }
 }
+
+module.exports = PopupWithImage;

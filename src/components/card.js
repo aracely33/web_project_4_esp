@@ -1,5 +1,5 @@
 //import { handleBigImageAppear } from "./utils.js";
-export default class Card {
+class Card {
   constructor(data, callback, selector) {
     this._data = data;
     this._title = data.title;
@@ -44,3 +44,5 @@ export default class Card {
     return this._element;
   }
 }
+
+module.exports = Card;

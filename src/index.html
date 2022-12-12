@@ -6,15 +6,14 @@
       name="viewport"
       content="width=device-width, height=device-height, initial-scale=1"
     />
-    <link rel="stylesheet" href="./vendor/normalize.css" />
-    <link rel="stylesheet" href="./src/index.css" />
     <title>Around the U.S.</title>
   </head>
   <body class="main">
     <main class="page">
       <header class="header">
         <img
-          src="./images/Headerlogo-min.svg"
+          id="header-logo"
+          src="<%=require('./images/Headerlogo-min.svg')%>"
           class="header__logo"
           alt="Around U.S. logo"
         />
@@ -24,7 +23,8 @@
         <div class="profile__avatar-container">
           <img
             class="profile__avatar"
-            src="./images/profile-avatar-min.jpg"
+            id="profile-avatar"
+            src="<%=require('./images/profile-avatar-min.jpg')%>"
             alt="hombre mayor con gorra roja"
           />
         </div>
@@ -175,6 +175,5 @@
         </div>
       </div>
     </template>
-    <script type="module" src="./src/index.js"></script>
   </body>
 </html>

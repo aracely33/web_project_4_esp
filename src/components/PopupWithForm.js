@@ -1,5 +1,6 @@
-import Popup from "./Popup.js";
-export default class PopupWithForm extends Popup {
+const Popup = require("./Popup");
+
+class PopupWithForm extends Popup {
   //lleva un callback del envío del formulario al constructor, así como el selector popup.
   constructor({ popupSelector, handleFormSubmit }) {
     super(popupSelector);
@@ -35,3 +36,5 @@ export default class PopupWithForm extends Popup {
     super.close();
   }
 }
+
+module.exports = PopupWithForm;

@@ -1,27 +1,29 @@
-import {
-  forms,
-  placesSelector,
-  initialPlacesInfo,
-  profileSelector,
-  addNewPlaceButton,
-  profileEditButton,
-} from "../utils/const.js";
-import Section from "../components/Section.js";
-import Card from "../components/card.js";
-import { openPopup } from "../utils/utils.js";
-import FormValidator from "../components/FormValidator.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithform.js";
-import UserInfo from "../components/UserInfo.js";
+import "./styles/index.css";
+import "./images/Headerlogo-min.svg";
+import "./images/profile-avatar-min.jpg";
+const constantes = require("./const");
+const Section = require("./components/Section");
+const Card = require("./components/card");
+const openPopup = require("./utils/utils");
+const FormValidator = require("./components/FormValidator");
+const PopupWithImage = require("./components/PopupWithImage");
+const PopupWithForm = require("./components/PopupWithForm");
+const UserInfo = require("./components/UserInfo");
+
+function test() {
+  console.log(constantes.profileSelector);
+}
+test();
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
 }
+
 //Para lugaress iniciales
 
 const placesList = new Section(
   {
-    data: initialPlacesInfo,
+    data: constantes.initialPlacesInfo, //aqui
     renderer: (item) => {
       const card = createCard(
         item,
@@ -36,7 +38,7 @@ const placesList = new Section(
       placesList.addItem(cardElement);
     },
   },
-  placesSelector
+  constantes.placesSelector //auí
 );
 
 placesList.renderItems();
@@ -63,7 +65,7 @@ const profilePopupForm = new PopupWithForm({
           const infoElement = ProfileInfo.setUserInfo(item);
         },
       },
-      profileSelector
+      constantes.profileSelector
     );
     //
     profile.renderItems();
@@ -98,14 +100,14 @@ const placePopupForm = new PopupWithForm({
           newPlacesList.addItem(cardElement);
         },
       },
-      placesSelector
+      constantes.placesSelector
     );
     newPlacesList.renderItems();
   },
 });
 
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
-forms.forEach((form) => {
+constantes.forms.forEach((form) => {
   const validate = new FormValidator(
     {
       formSelector: ".popup__form",
@@ -128,8 +130,8 @@ function openProfileFormPopup() {
 }
 
 function addEventListeners() {
-  profileEditButton.addEventListener("click", openProfileFormPopup);
-  addNewPlaceButton.addEventListener("click", openPlaceFormPopup);
+  constantes.profileEditButton.addEventListener("click", openProfileFormPopup);
+  constantes.addNewPlaceButton.addEventListener("click", openPlaceFormPopup);
 }
 
 addEventListeners();

@@ -30,6 +30,12 @@ También es posible salir del formulario emergente o de la imagen en grande haci
 
 Una vez refrescada la página, ningún cambio es guardado.Para completar esta parte se pretende agregar más tarde la parte de la conexión con el servidor.
 
+Se realizó una reestructuración del código, notarás que se adicionaron las clases:
+
+- Popup que, asu vez es la clase padre de PopupWithForms y PopupWith Image. Este conjunto de clases se encargan de las funcionalidades de abrir y cerrar los Popups de todo el proyecto.
+  -FormValidator se encarga de validar la información que es ingresada por el usuario.
+  -Por otra parte UserInfo tiene la tarea de recopilar esta misma información ingresada y pasarla a la clase Card para que genere una nueva carta o modifique el perfil del usuario.
+
 ### Tecnologías y técnicas
 
 - Figma
@@ -39,6 +45,7 @@ Una vez refrescada la página, ningún cambio es guardado.Para completar esta pa
 - JavaScript modular
 - BEM
 - GitHub pages
+- WebPack
 
 **Figma**
 
