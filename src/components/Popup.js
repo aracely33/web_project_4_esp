@@ -2,6 +2,9 @@ class Popup {
   constructor(popupSelector) {
     this._popup = popupSelector;
     this._popupElement = document.querySelector(this._popup);
+    this._handleCloseButton = this._handleCloseButton.bind(this);
+    this._handleEscClose = this._handleEscClose.bind(this);
+    this._handleTap = this._handleTap.bind(this);
   }
 
   open() {
@@ -20,24 +23,27 @@ class Popup {
 
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
+      console.log("estas dentro del if de handleEscClose");
       this._popupElement = document.querySelector(".popup_opened");
-      this._popupElement.classList.remove("popup_opened");
+      this.close();
     }
   }
   /*almacena la lógica para cerrar el popup al pulsar tap en la superposición.*/
 
   _handleTap(evt) {
     const tap = evt.target.classList.contains("popup");
+    this._popupElement = evt.target;
     if (tap) {
-      evt.target.classList.remove("popup_opened");
+      this.close();
     }
   }
 
   _handleCloseButton(evt) {
     const button = evt.target.classList.contains("close-button");
+    this._popupElement = document.querySelector(".popup_opened");
+
     if (button) {
-      this._popupElement = document.querySelector(".popup_opened");
-      this._popupElement.classList.remove("popup_opened");
+      this.close();
     }
   }
 

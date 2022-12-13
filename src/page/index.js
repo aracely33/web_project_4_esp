@@ -1,19 +1,15 @@
-import "./styles/index.css";
-import "./images/Headerlogo-min.svg";
-import "./images/profile-avatar-min.jpg";
-const constantes = require("./const");
-const Section = require("./components/Section");
-const Card = require("./components/card");
-const openPopup = require("./utils/utils");
-const FormValidator = require("./components/FormValidator");
-const PopupWithImage = require("./components/PopupWithImage");
-const PopupWithForm = require("./components/PopupWithForm");
-const UserInfo = require("./components/UserInfo");
+import "./index.css";
+import "../images/Headerlogo-min.svg";
+import "../images/profile-avatar-min.jpg";
+const constantes = require("../const");
+const Section = require("../components/Section");
+const Card = require("../components/card");
+const openPopup = require("../utils/utils");
+const FormValidator = require("../components/FormValidator");
+const PopupWithImage = require("../components/PopupWithImage");
+const PopupWithForm = require("../components/PopupWithForm");
+const UserInfo = require("../components/UserInfo");
 
-function test() {
-  console.log(constantes.profileSelector);
-}
-test();
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
