@@ -179,6 +179,41 @@
       </div>
     </div>
 
+    <div class="popup popup_type-form-change-profile-avatar popup_opened">
+      <div
+        class="popup__container popup__container_function-change-profile-avatar"
+      >
+        <form
+          class="form form_change-profile-avatar popup__form"
+          novalidate
+          name="formChangeAvatar"
+        >
+          <fieldset class="form__fields form__set">
+            <h2 class="form__heading">Cambiar foto de perfil</h2>
+            <div class="form__field">
+              <input
+                id="image-avatar"
+                class="form__input form__input_new-avatar-url popup__input"
+                placeholder="Enlace a la imagen del avatar"
+                name="avatar"
+                type="url"
+                value=""
+                required
+              />
+              <span class="popup__error avatar-error"></span>
+            </div>
+            <button
+              class="form__Button form__submit popup__button pointer"
+              type="submit"
+            >
+              Guarda
+            </button>
+          </fieldset>
+        </form>
+        <button class="close-button pointer" type="button"></button>
+      </div>
+    </div>
+
     <template class="template__place">
       <div class="item">
         <button type="button" class="item__trash-button"></button>
