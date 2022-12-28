@@ -35,12 +35,14 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/_type/popup_type-form-new-place.css);
 @import url(../blocks/popup/_type/popup_type-form-new-profile.css);
+@import url(../blocks/popup/_type/popup_type-form-delete-card-ask.css);
 @import url(../blocks/popup/_type/popup_type-image.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__imagedescription/popup__imagedescription.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__container/_function/popup__container_function-form.css);
 @import url(../blocks/popup/__container/_function/popup__container_function-image.css);
+@import url(../blocks/popup/__container/_function/popup__container_function-delete-card-popup.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__button/popup__button.css);
@@ -50,11 +52,15 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_error.css);
 
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/_delete-place/form_delete-place.css);
+
 @import url(../blocks/form/_newplace/form_newplace.css);
 
 @import url(../blocks/form/__fields/form__fields.css);
 @import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/form/__heading/form__heading.css);
+@import url(../blocks/form/__heading/_form-type/form__heading_type-form-delete-card.css);
+
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input/_info/form__input_info-name.css);
 @import url(../blocks/form/__input/_info/form__input_info-occupation.css);
