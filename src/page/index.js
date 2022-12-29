@@ -1,6 +1,6 @@
 import "./index.css";
 import "../images/Headerlogo-min.svg";
-import "../images/profile-avatar-min.jpg";
+/*import "../images/profile-avatar-min.jpg";*/
 const constantes = require("../const");
 const Section = require("../components/Section");
 const Card = require("../components/card");
