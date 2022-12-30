@@ -22,6 +22,10 @@ class Api {
 
         document.querySelector(".profile__info-occupation").textContent =
           UserInfo.about;
+
+        document.querySelector(
+          ".profile__avatar-container"
+        ).style.backgroundImage = `url(${UserInfo.avatar})`;
       });
   }
 

@@ -1,18 +1,7 @@
 .profile__avatar-container {
   min-width: 120px;
   min-height: 120px;
-  margin: 0 3.4% 0 0;
-  padding: 0;
+  background-size: 100% 100%;
   border-radius: 50%;
-
-  background-image: url("../../../images/profile-avatar-min.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
-
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  margin: 0 3.4% 0 0;
 }
