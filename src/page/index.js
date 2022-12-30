@@ -9,6 +9,7 @@ const FormValidator = require("../components/FormValidator");
 const PopupWithImage = require("../components/PopupWithImage");
 const PopupWithForm = require("../components/PopupWithForm");
 const UserInfo = require("../components/UserInfo");
+
 const Api = require("../components/Api");
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_02",
@@ -19,6 +20,7 @@ const api = new Api({
 });
 
 api.getUserInfo();
+const result = api.getInitialCards();
 
 /*
 const initialUserInfo = new Section(
