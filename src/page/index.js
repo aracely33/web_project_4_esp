@@ -9,7 +9,35 @@ const FormValidator = require("../components/FormValidator");
 const PopupWithImage = require("../components/PopupWithImage");
 const PopupWithForm = require("../components/PopupWithForm");
 const UserInfo = require("../components/UserInfo");
+const Api = require("../components/Api");
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_02",
+  headers: {
+    authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+    "Content-Type": "application/json",
+  },
+});
 
+api.getUserInfo();
+
+/*
+const initialUserInfo = new Section(
+  {
+    data: api.getUserInfo(),
+    renderer: (item) => {
+      const ProfileInfo = new UserInfo(
+        ".profile__info-name",
+        ".profile__info-occupation"
+      );
+      const infoElement = ProfileInfo.setUserInfo(item);
+    },
+  },
+  constantes.profileSelector
+);
+//
+initialUserInfo.renderItems();*/
+
+/*
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
@@ -131,3 +159,4 @@ function addEventListeners() {
 }
 
 addEventListeners();
+*/
