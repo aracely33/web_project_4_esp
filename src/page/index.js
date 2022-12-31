@@ -21,41 +21,23 @@ const api = new Api({
 
 const ProfileInfo = new UserInfo(
   ".profile__info-name",
-  ".profile__info-occupation"
+  ".profile__info-occupation",
+  ".profile__avatar-container"
 );
 
 api.getUserInfo().then((json) => {
-  console.log(json);
   ProfileInfo.setUserInfo(json);
 });
-
-/*
-const initialUserInfo = new Section(
-  {
-    data: api.getUserInfo(),
-    renderer: (item) => {
-      const ProfileInfo = new UserInfo(
-        ".profile__info-name",
-        ".profile__info-occupation"
-      );
-      const infoElement = ProfileInfo.setUserInfo(item);
-    },
-  },
-  constantes.profileSelector
-);
-//
-initialUserInfo.renderItems();*/
 
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
 }
 
-//Para lugaress iniciales
-
+//Para lugares iniciales
 const placesList = new Section(
   {
-    data: constantes.initialPlacesInfo, //aqui
+    /*data: constantes.initialPlacesInfo,*/
     renderer: (item) => {
       const card = createCard(
         item,
@@ -70,7 +52,7 @@ const placesList = new Section(
       placesList.addItem(cardElement);
     },
   },
-  constantes.placesSelector //auí
+  constantes.placesSelector
 );
 
 const result = api.getInitialCards().then((json) => {
@@ -80,11 +62,8 @@ const result = api.getInitialCards().then((json) => {
   placesList.setItems(cards);
   placesList.renderItems();
 });
+
 /*
-placesList.renderItems();
-
-
-
 //////Nueva instancia de PopUpForm para el perfil
 
 const profilePopupForm = new PopupWithForm({
@@ -178,3 +157,19 @@ function addEventListeners() {
 
 addEventListeners();
 */
+/*
+const initialUserInfo = new Section(
+  {
+    data: api.getUserInfo(),
+    renderer: (item) => {
+      const ProfileInfo = new UserInfo(
+        ".profile__info-name",
+        ".profile__info-occupation"
+      );
+      const infoElement = ProfileInfo.setUserInfo(item);
+    },
+  },
+  constantes.profileSelector
+);
+//
+initialUserInfo.renderItems();*/
