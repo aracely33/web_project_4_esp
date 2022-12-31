@@ -6,15 +6,17 @@ class UserInfo {
     this._userJobContainer = document.querySelector(this._userJobSelector);
   }
 
-  getUserInfo(item) {
-    this._userInfo = item;
-    return this._userInfo;
+  getUserInfo() {
+    return {
+      name: this._userNameContainer.textContent,
+      job: this.this._userJobContainer.textContent,
+    };
   }
 
   setUserInfo(item) {
-    this.getUserInfo(item);
-    this._userNameContainer.textContent = this._userInfo.nombre;
-    this._userJobContainer.textContent = this._userInfo.ocupación;
+    this._userNameContainer.textContent = item.name;
+
+    this._userJobContainer.textContent = item.about;
   }
 }
 

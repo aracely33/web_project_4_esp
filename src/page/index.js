@@ -19,8 +19,15 @@ const api = new Api({
   },
 });
 
-api.getUserInfo();
-const result = api.getInitialCards();
+const ProfileInfo = new UserInfo(
+  ".profile__info-name",
+  ".profile__info-occupation"
+);
+
+api.getUserInfo().then((json) => {
+  console.log(json);
+  ProfileInfo.setUserInfo(json);
+});
 
 /*
 const initialUserInfo = new Section(
@@ -39,7 +46,6 @@ const initialUserInfo = new Section(
 //
 initialUserInfo.renderItems();*/
 
-/*
 function createCard(item, callback, selector) {
   const card = new Card(item, callback, selector);
   return card;
@@ -67,7 +73,17 @@ const placesList = new Section(
   constantes.placesSelector //auí
 );
 
+const result = api.getInitialCards().then((json) => {
+  const cards = json.map((item) => {
+    return { ...item, title: item.name, url: item.link };
+  });
+  placesList.setItems(cards);
+  placesList.renderItems();
+});
+/*
 placesList.renderItems();
+
+
 
 //////Nueva instancia de PopUpForm para el perfil
 
