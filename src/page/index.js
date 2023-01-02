@@ -127,6 +127,8 @@ const placePopupForm = new PopupWithForm({
   },
 });
 
+*/
+
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
 constantes.forms.forEach((form) => {
   const validate = new FormValidator(
@@ -156,7 +158,7 @@ function addEventListeners() {
 }
 
 addEventListeners();
-*/
+
 /*
 const initialUserInfo = new Section(
   {
