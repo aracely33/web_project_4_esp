@@ -63,37 +63,20 @@ const result = api.getInitialCards().then((json) => {
   placesList.renderItems();
 });
 
-/*
 //////Nueva instancia de PopUpForm para el perfil
 
 const profilePopupForm = new PopupWithForm({
   popupSelector: ".popup_type-form-new-profile",
   handleFormSubmit: (value) => {
-    const newProfile = [
-      {
-        nombre: value.nombre,
-        ocupación: value.ocupación,
-      },
-    ];
-    const profile = new Section(
-      {
-        data: newProfile,
-        renderer: (item) => {
-          const ProfileInfo = new UserInfo(
-            ".profile__info-name",
-            ".profile__info-occupation"
-          );
-          const infoElement = ProfileInfo.setUserInfo(item);
-        },
-      },
-      constantes.profileSelector
-    );
-    //
-    profile.renderItems();
+    const profileValues = api.handleEditProfile(value).then((res) => {
+      api.getUserInfo().then((json) => {
+        ProfileInfo.setUserInfo(json);
+      });
+    });
   },
 });
-////////
 
+////////
 //////Nueva instancia de PopUpForm para el lugar
 
 const placePopupForm = new PopupWithForm({
@@ -126,8 +109,6 @@ const placePopupForm = new PopupWithForm({
     newPlacesList.renderItems();
   },
 });
-
-*/
 
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
 constantes.forms.forEach((form) => {
