@@ -82,31 +82,10 @@ const profilePopupForm = new PopupWithForm({
 const placePopupForm = new PopupWithForm({
   popupSelector: ".popup_type-form-new-place",
   handleFormSubmit: (value) => {
-    const morePlaces = [
-      {
-        title: value.title,
-        url: value.image,
-      },
-    ];
-    const newPlacesList = new Section(
-      {
-        data: morePlaces,
-        renderer: (item) => {
-          const card = createCard(
-            item,
-            (evt) => {
-              const bigImage = new PopupWithImage(".popup_type-image");
-            },
-            ".template__place"
-          );
-          const cardElement = card.generateCard();
-
-          newPlacesList.addItem(cardElement);
-        },
-      },
-      constantes.placesSelector
-    );
-    newPlacesList.renderItems();
+    const cardValues = api.handleAddCard(value).then((res) => {
+      console.log(res);
+      const newArrayCard = Array.of(res);
+    });
   },
 });
 

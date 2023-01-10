@@ -55,6 +55,25 @@ class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
+
+  handleAddCard(value) {
+    return fetch("https://around.nomoreparties.co/v1/web_es_cohort_02/cards ", {
+      method: "POST",
+      headers: {
+        authorization: "38be44b0-e909-4575-ba93-d677e497f17a",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: `${value.title}`,
+        link: `${value.image}`,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }
 
 module.exports = Api;
