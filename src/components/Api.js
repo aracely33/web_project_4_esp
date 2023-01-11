@@ -74,6 +74,8 @@ class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
+
+  handleChangeAvatar(value) {}
 }
 
 module.exports = Api;

@@ -89,6 +89,15 @@ const placePopupForm = new PopupWithForm({
   },
 });
 
+////intancia para cambiar de avatar
+
+const changeAvatarPopupForm = new PopupWithForm({
+  popupSelector: ".popup_type-form-change-profile-avatar",
+  handleFormSubmit: (value) => {
+    console.log(value);
+  },
+});
+
 //Crea una instancia de la clase FormValidator para cada formulario que deba ser validado.FOREACH
 constantes.forms.forEach((form) => {
   const validate = new FormValidator(
@@ -112,9 +121,14 @@ function openProfileFormPopup() {
   openPopup(profilePopupForm);
 }
 
+function openQuestionFormPopup() {
+  openPopup(changeAvatarPopupForm);
+}
+
 function addEventListeners() {
   constantes.profileEditButton.addEventListener("click", openProfileFormPopup);
   constantes.addNewPlaceButton.addEventListener("click", openPlaceFormPopup);
+  constantes.avatarEditButton.addEventListener("click", openQuestionFormPopup);
 }
 
 addEventListeners();
