@@ -83,8 +83,17 @@ const placePopupForm = new PopupWithForm({
   popupSelector: ".popup_type-form-new-place",
   handleFormSubmit: (value) => {
     const cardValues = api.handleAddCard(value).then((res) => {
-      console.log(res);
-      const newArrayCard = Array.of(res);
+      const newCard = createCard(
+        { ...res, title: res.name, url: res.link },
+        (evt) => {
+          const bigImage = new PopupWithImage(".popup_type-image");
+          bigImage.open(evt);
+        },
+        ".template__place"
+      );
+      const cardElement = newCard.generateCard();
+      const gallery = document.querySelector(constantes.placesSelector);
+      gallery.prepend(cardElement);
     });
   },
 });
@@ -132,20 +141,3 @@ function addEventListeners() {
 }
 
 addEventListeners();
-
-/*
-const initialUserInfo = new Section(
-  {
-    data: api.getUserInfo(),
-    renderer: (item) => {
-      const ProfileInfo = new UserInfo(
-        ".profile__info-name",
-        ".profile__info-occupation"
-      );
-      const infoElement = ProfileInfo.setUserInfo(item);
-    },
-  },
-  constantes.profileSelector
-);
-//
-initialUserInfo.renderItems();*/
