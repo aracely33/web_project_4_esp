@@ -56,6 +56,7 @@ const placesList = new Section(
 );
 
 const result = api.getInitialCards().then((json) => {
+  console.log(json);
   const cards = json.map((item) => {
     return { ...item, title: item.name, url: item.link };
   });

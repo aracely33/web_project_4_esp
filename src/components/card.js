@@ -36,6 +36,9 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._addEventListeners();
+
+    /*this._element.querySelector(".item__likes-number").textContent =
+      this._data.likes.lenght;*/
     this._element.querySelector(".item__place").src = this._image;
     this._element.querySelector(".item__place-info-name").textContent =
       this._title;
