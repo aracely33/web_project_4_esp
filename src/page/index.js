@@ -29,8 +29,8 @@ api.getUserInfo().then((json) => {
   ProfileInfo.setUserInfo(json);
 });
 
-function createCard(item, callback, selector) {
-  const card = new Card(item, callback, selector);
+function createCard(item, callback, selector, handleTrashButton) {
+  const card = new Card(item, callback, selector, handleTrashButton);
   return card;
 }
 
@@ -39,24 +39,57 @@ const placesList = new Section(
   {
     /*data: constantes.initialPlacesInfo,*/
     renderer: (item) => {
-      const card = createCard(
-        item,
-        (evt) => {
-          const bigImage = new PopupWithImage(".popup_type-image");
+      const owner = "006f3087a8e18511dd8656b8";
+      if (item.owner._id === owner) {
+        const card = createCard(
+          item,
+          (evt) => {
+            const bigImage = new PopupWithImage(".popup_type-image");
+            bigImage.open(evt);
+          },
+          ".template__place",
+          (evt) => {
+            const deleteCardAskPopupForm = new PopupWithForm({
+              popupSelector: ".popup_type-form-delete-card-ask",
+              handleFormSubmit: () => {
+                api.handleDeleteCard(item._id).then((res) => {
+                  evt.target.parentElement.remove();
+                });
+              },
+            });
 
-          bigImage.open(evt);
-        },
-        ".template__place"
-      );
-      const cardElement = card.generateCard();
-      placesList.addItem(cardElement);
+            openPopup(deleteCardAskPopupForm);
+          }
+        );
+
+        const cardElement = card.generateCard();
+        placesList.addItem(cardElement);
+      } else {
+        const noOwnwerCard = createCard(
+          item,
+          (evt) => {
+            const bigImage = new PopupWithImage(".popup_type-image");
+
+            bigImage.open(evt);
+          },
+          ".template__place",
+          (evt) => {
+            console.log(evt.target);
+          }
+        );
+
+        const cardElement = noOwnwerCard.generateCard();
+        const itemCard = cardElement.querySelector(".item");
+        const trashButton = cardElement.querySelector(".item__trash-button");
+        itemCard.removeChild(trashButton);
+        placesList.addItem(cardElement);
+      }
     },
   },
   constantes.placesSelector
 );
 
 const result = api.getInitialCards().then((json) => {
-  console.log(json);
   const cards = json.map((item) => {
     return { ...item, title: item.name, url: item.link };
   });
