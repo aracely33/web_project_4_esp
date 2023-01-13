@@ -29,8 +29,20 @@ api.getUserInfo().then((json) => {
   ProfileInfo.setUserInfo(json);
 });
 
-function createCard(item, callback, selector, handleTrashButton) {
-  const card = new Card(item, callback, selector, handleTrashButton);
+function createCard(
+  item,
+  callback,
+  selector,
+  handleTrashButton,
+  handleLikeButtonClick
+) {
+  const card = new Card(
+    item,
+    callback,
+    selector,
+    handleTrashButton,
+    handleLikeButtonClick
+  );
   return card;
 }
 
@@ -59,6 +71,13 @@ const placesList = new Section(
             });
 
             openPopup(deleteCardAskPopupForm);
+          },
+          (evt) => {
+            evt.target.classList.toggle("item__place-like-button_active");
+            console.log(
+              evt.target.classList.contains("item__place-like-button_active")
+            );
+            console.log(item._id);
           }
         );
 
@@ -75,6 +94,10 @@ const placesList = new Section(
           ".template__place",
           (evt) => {
             console.log(evt.target);
+          },
+          (evt) => {
+            console.log(evt.target);
+            console.log(item._id);
           }
         );
 

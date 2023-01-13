@@ -1,12 +1,19 @@
 //import { handleBigImageAppear } from "./utils.js";
 class Card {
-  constructor(data, callback, selector, handleTrashButton) {
+  constructor(
+    data,
+    callback,
+    selector,
+    handleTrashButton,
+    handleLikeButtonClick
+  ) {
     this._data = data;
     this._title = data.title;
     this._image = data.url;
     this._selector = selector;
     this._handleCardClick = callback;
     this._handleTrashButton = handleTrashButton;
+    this._handleLikeButtonClick = handleLikeButtonClick;
   }
 
   _getTemplate() {
@@ -27,16 +34,16 @@ class Card {
       .addEventListener("click", this._handleCardClick);
     this._element
       .querySelector(".item__place-like-button")
-      .addEventListener("click", function (evt) {
-        evt.target.classList.toggle("item__place-like-button_active");
-      });
+      .addEventListener("click", this._handleLikeButtonClick);
   }
 
   generateCard() {
     this._element = this._getTemplate();
     this._addEventListeners();
-    /*this._element.querySelector(".item__likes-number").textContent =
-      this._data.likes.lenght;*/
+
+    this._element.querySelector(".item__likes-number").textContent =
+      this._data.likes.length;
+
     this._element.querySelector(".item__place").src = this._image;
     this._element.querySelector(".item__place-info-name").textContent =
       this._title;
