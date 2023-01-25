@@ -1,6 +1,5 @@
 import "./index.css";
 import "../images/Headerlogo-min.svg";
-/*import "../images/profile-avatar-min.jpg";*/
 const constantes = require("../const");
 const Section = require("../components/Section");
 const Card = require("../components/card");
@@ -30,10 +29,6 @@ api.getUserInfo().then((json) => {
 });
 
 function createCard(item) {
-  /*const ILike = item.likes.some((element) => {
-    return element._id === "006f3087a8e18511dd8656b8";
-  });*/
-  //console.log(ILike);
   const card = new Card(
     item,
     (evt) => {
@@ -50,27 +45,15 @@ function createCard(item) {
           });
         },
       });
-
       openPopup(deleteCardAskPopupForm);
     },
     (evt) => {
-      console.log(item);
-      const ILike = item.likes.some((element) => {
-        return element._id === "006f3087a8e18511dd8656b8";
-      });
-      /*console.log("inicio");
-      const ILike = item.likes.some((element) => {
-        return element._id === "006f3087a8e18511dd8656b8";
-      });
-      console.log(`me gusta esta publicación? ${ILike} `);
-      console.log(item.likes);*/
+      const ILike = evt.target.classList.contains(
+        "item__place-like-button_active"
+      );
       evt.target.classList.toggle("item__place-like-button_active");
-
       const unLike = () => {
         const unLike = api.handleUnLikeClick(item._id).then((res) => {
-          console.log(res);
-          //evt.target.classList.toggle("item__place-like-button_active");
-          console.log(`el array de likes tiene ${res.likes.length} elementos`);
           evt.target.parentElement.querySelector(
             ".item__likes-number"
           ).textContent = res.likes.length;
@@ -80,27 +63,13 @@ function createCard(item) {
 
       const like = () => {
         const like = api.handleLikeClick(item._id).then((res) => {
-          console.log(res);
-          //evt.target.classList.toggle("item__place-like-button_active");
-          console.log(`el array de likes tiene ${res.likes.length} elementos`);
-
           evt.target.parentElement.querySelector(
             ".item__likes-number"
           ).textContent = res.likes.length;
         });
         return like;
       };
-
-      if (ILike) {
-        console.log("Ya le has dado like");
-        unLike();
-      } else {
-        console.log("aún no le has dado like");
-        like();
-      }
-      console.log(`me gusta esta publicación? ${ILike} `);
-      console.log(item.likes);
-      console.log("fin");
+      ILike ? unLike() : like();
     }
   );
 
@@ -110,9 +79,7 @@ function createCard(item) {
 //Para lugares iniciales
 const placesList = new Section(
   {
-    /*data: constantes.initialPlacesInfo,*/
     renderer: (item) => {
-      //console.log(item);
       const ownerId = "006f3087a8e18511dd8656b8";
       const ILike = item.likes.some((element) => {
         return element._id === ownerId;
