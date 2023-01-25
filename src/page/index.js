@@ -29,20 +29,81 @@ api.getUserInfo().then((json) => {
   ProfileInfo.setUserInfo(json);
 });
 
-function createCard(
-  item,
-  callback,
-  selector,
-  handleTrashButton,
-  handleLikeButtonClick
-) {
+function createCard(item) {
+  /*const ILike = item.likes.some((element) => {
+    return element._id === "006f3087a8e18511dd8656b8";
+  });*/
+  //console.log(ILike);
   const card = new Card(
     item,
-    callback,
-    selector,
-    handleTrashButton,
-    handleLikeButtonClick
+    (evt) => {
+      const bigImage = new PopupWithImage(".popup_type-image");
+      bigImage.open(evt);
+    },
+    ".template__place",
+    (evt) => {
+      const deleteCardAskPopupForm = new PopupWithForm({
+        popupSelector: ".popup_type-form-delete-card-ask",
+        handleFormSubmit: () => {
+          api.handleDeleteCard(item._id).then((res) => {
+            evt.target.parentElement.remove();
+          });
+        },
+      });
+
+      openPopup(deleteCardAskPopupForm);
+    },
+    (evt) => {
+      console.log(item);
+      const ILike = item.likes.some((element) => {
+        return element._id === "006f3087a8e18511dd8656b8";
+      });
+      /*console.log("inicio");
+      const ILike = item.likes.some((element) => {
+        return element._id === "006f3087a8e18511dd8656b8";
+      });
+      console.log(`me gusta esta publicación? ${ILike} `);
+      console.log(item.likes);*/
+      evt.target.classList.toggle("item__place-like-button_active");
+
+      const unLike = () => {
+        const unLike = api.handleUnLikeClick(item._id).then((res) => {
+          console.log(res);
+          //evt.target.classList.toggle("item__place-like-button_active");
+          console.log(`el array de likes tiene ${res.likes.length} elementos`);
+          evt.target.parentElement.querySelector(
+            ".item__likes-number"
+          ).textContent = res.likes.length;
+        });
+        return unLike;
+      };
+
+      const like = () => {
+        const like = api.handleLikeClick(item._id).then((res) => {
+          console.log(res);
+          //evt.target.classList.toggle("item__place-like-button_active");
+          console.log(`el array de likes tiene ${res.likes.length} elementos`);
+
+          evt.target.parentElement.querySelector(
+            ".item__likes-number"
+          ).textContent = res.likes.length;
+        });
+        return like;
+      };
+
+      if (ILike) {
+        console.log("Ya le has dado like");
+        unLike();
+      } else {
+        console.log("aún no le has dado like");
+        like();
+      }
+      console.log(`me gusta esta publicación? ${ILike} `);
+      console.log(item.likes);
+      console.log("fin");
+    }
   );
+
   return card;
 }
 
@@ -51,61 +112,25 @@ const placesList = new Section(
   {
     /*data: constantes.initialPlacesInfo,*/
     renderer: (item) => {
-      const owner = "006f3087a8e18511dd8656b8";
-      if (item.owner._id === owner) {
-        const card = createCard(
-          item,
-          (evt) => {
-            const bigImage = new PopupWithImage(".popup_type-image");
-            bigImage.open(evt);
-          },
-          ".template__place",
-          (evt) => {
-            const deleteCardAskPopupForm = new PopupWithForm({
-              popupSelector: ".popup_type-form-delete-card-ask",
-              handleFormSubmit: () => {
-                api.handleDeleteCard(item._id).then((res) => {
-                  evt.target.parentElement.remove();
-                });
-              },
-            });
-
-            openPopup(deleteCardAskPopupForm);
-          },
-          (evt) => {
-            evt.target.classList.toggle("item__place-like-button_active");
-            console.log(
-              evt.target.classList.contains("item__place-like-button_active")
-            );
-            console.log(item._id);
-          }
-        );
-
-        const cardElement = card.generateCard();
+      //console.log(item);
+      const ownerId = "006f3087a8e18511dd8656b8";
+      const ILike = item.likes.some((element) => {
+        return element._id === ownerId;
+      });
+      const owner = item.owner._id === ownerId;
+      const card = createCard(item);
+      const cardElement = card.generateCard();
+      const itemCard = cardElement.querySelector(".item");
+      const trashButton = cardElement.querySelector(".item__trash-button");
+      const heartButton = cardElement.querySelector(".item__place-like-button");
+      if (owner) {
         placesList.addItem(cardElement);
       } else {
-        const noOwnwerCard = createCard(
-          item,
-          (evt) => {
-            const bigImage = new PopupWithImage(".popup_type-image");
-
-            bigImage.open(evt);
-          },
-          ".template__place",
-          (evt) => {
-            console.log(evt.target);
-          },
-          (evt) => {
-            console.log(evt.target);
-            console.log(item._id);
-          }
-        );
-
-        const cardElement = noOwnwerCard.generateCard();
-        const itemCard = cardElement.querySelector(".item");
-        const trashButton = cardElement.querySelector(".item__trash-button");
         itemCard.removeChild(trashButton);
         placesList.addItem(cardElement);
+      }
+      if (ILike) {
+        heartButton.classList.add("item__place-like-button_active");
       }
     },
   },
