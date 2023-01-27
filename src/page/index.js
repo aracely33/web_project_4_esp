@@ -152,7 +152,9 @@ const placePopupForm = new PopupWithForm({
 const changeAvatarPopupForm = new PopupWithForm({
   popupSelector: ".popup_type-form-change-profile-avatar",
   handleFormSubmit: (value) => {
-    console.log(value);
+    api.handleChangeAvatar(value).then((res) => {
+      constantes.avatarImage.style.backgroundImage = `url(${value.avatar})`;
+    });
   },
 });
 

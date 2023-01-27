@@ -5,10 +5,12 @@ exports.profileEditButton = document.querySelector(
 exports.avatarEditButton = document.querySelector(
   ".profile__avatar-edit-button"
 );
+exports.avatarImage = document.querySelector(".profile__avatar-container");
+
 exports.forms = document.querySelectorAll(".form");
 exports.placesSelector = ".gallery";
 exports.profileSelector = ".profile__info";
-
+/*
 exports.initialPlacesInfo = [
   {
     title: "Valle de Yosemite",
@@ -34,4 +36,4 @@ exports.initialPlacesInfo = [
     title: "Lago di Braies",
     url: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
-];
+];*/
