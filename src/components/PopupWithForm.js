@@ -20,8 +20,13 @@ class PopupWithForm extends Popup {
 
   _popupFormSubmit(evt) {
     evt.preventDefault();
+    evt.target.querySelector(".form__Button").textContent = "Guardando...";
+
     this._handleFormSubmit(this._getInputValues());
+
     this._formElement.reset();
+    evt.target.querySelector(".form__Button").textContent = "Guardar";
+
     this.close();
   }
 

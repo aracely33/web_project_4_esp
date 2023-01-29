@@ -8,7 +8,6 @@ const FormValidator = require("../components/FormValidator");
 const PopupWithImage = require("../components/PopupWithImage");
 const PopupWithForm = require("../components/PopupWithForm");
 const UserInfo = require("../components/UserInfo");
-
 const Api = require("../components/Api");
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_02",
@@ -152,9 +151,16 @@ const placePopupForm = new PopupWithForm({
 const changeAvatarPopupForm = new PopupWithForm({
   popupSelector: ".popup_type-form-change-profile-avatar",
   handleFormSubmit: (value) => {
-    api.handleChangeAvatar(value).then((res) => {
-      constantes.avatarImage.style.backgroundImage = `url(${value.avatar})`;
-    });
+    api
+      .handleChangeAvatar(value)
+      .then((res) => {
+        constantes.avatarImage.style.backgroundImage = `url(${value.avatar})`;
+      })
+      .finally(() => {
+        document
+          .querySelector(".popup_type-form-change-profile-avatar")
+          .querySelector(".form__Button").textContent = "Guardar";
+      });
   },
 });
 
