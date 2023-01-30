@@ -34,7 +34,6 @@ function createCard(item) {
       const bigImage = new PopupWithImage(".popup_type-image");
       bigImage.open(evt);
     },
-    ".template__place",
     (evt) => {
       const deleteCardAskPopupForm = new PopupWithForm({
         popupSelector: ".popup_type-form-delete-card-ask",
@@ -136,8 +135,7 @@ const placePopupForm = new PopupWithForm({
         (evt) => {
           const bigImage = new PopupWithImage(".popup_type-image");
           bigImage.open(evt);
-        },
-        ".template__place"
+        }
       );
       const cardElement = newCard.generateCard();
       const gallery = document.querySelector(constantes.placesSelector);

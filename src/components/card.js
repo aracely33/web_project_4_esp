@@ -1,15 +1,9 @@
 class Card {
-  constructor(
-    data,
-    callback,
-    selector,
-    handleTrashButton,
-    handleLikeButtonClick
-  ) {
+  constructor(data, callback, handleTrashButton, handleLikeButtonClick) {
     this._data = data;
     this._title = data.title;
     this._image = data.url;
-    this._selector = selector;
+
     this._handleCardClick = callback;
     this._handleTrashButton = handleTrashButton;
     this._handleLikeButtonClick = handleLikeButtonClick;
@@ -17,7 +11,7 @@ class Card {
 
   _getTemplate() {
     const cardElement = document
-      .querySelector(this._selector)
+      .querySelector(".template__place")
       .content.cloneNode(true);
     return cardElement;
   }
