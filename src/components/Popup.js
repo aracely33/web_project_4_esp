@@ -23,7 +23,6 @@ class Popup {
 
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
-      console.log("estas dentro del if de handleEscClose");
       this._popupElement = document.querySelector(".popup_opened");
       this.close();
     }

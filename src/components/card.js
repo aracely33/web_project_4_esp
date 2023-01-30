@@ -1,4 +1,3 @@
-//import { handleBigImageAppear } from "./utils.js";
 class Card {
   constructor(
     data,
