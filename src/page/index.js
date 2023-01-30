@@ -8,8 +8,8 @@ const FormValidator = require("../components/FormValidator");
 const PopupWithImage = require("../components/PopupWithImage");
 const PopupWithForm = require("../components/PopupWithForm");
 const UserInfo = require("../components/UserInfo");
-const Api = require("../components/Api");
-const api = new Api({
+const API = require("../components/API");
+const api = new API({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_cohort_02",
   headers: {
     authorization: "38be44b0-e909-4575-ba93-d677e497f17a",

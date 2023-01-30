@@ -1,4 +1,4 @@
-class Api {
+class API {
   constructor(options) {
     this.options = options;
   }
@@ -148,4 +148,4 @@ class Api {
   }
 }
 
-module.exports = Api;
+module.exports = API;
